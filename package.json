@@ -2,12 +2,16 @@
   "name": "fluant",
   "version": "1.0.0",
   "description": "fluant - The new and smart way to learn a language",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
+    "build-client": "cd client && npm run build",
+    "build-storybook": "cd client && npm run build-storybook",
+    "build": "npm run build-storybook && npm run build-client",
     "client": "cd client && npm start",
-    "build": "cd client && npm run build",
-    "server": "nodemon index.js",
-    "start": "node index.js"
+    "server": "node server.js",
+    "storybook": "cd client && npm run storybook",
+    "test": "cd client && npm test",
+    "postinstall": "cd client && npm install"
   },
   "repository": {
     "type": "git",
