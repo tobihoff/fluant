@@ -1,9 +1,8 @@
 import React from 'react';
-import { action } from '@storybook/addon-actions';
-import { Button } from '@storybook/react/demo';
+import SignInButton from '../components/Buttons/Button';
 
 export default {
   title: 'Button'
 };
 
-export const text = () => <Button onClick={action('clicked')}>Hello world</Button>;
+export const ButtonSignIn = () => <SignInButton text={'Sign in'}></SignInButton>;
