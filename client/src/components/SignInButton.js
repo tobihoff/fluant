@@ -12,6 +12,4 @@ const Button = styled.button`
   background-color: ${({ theme }) => theme.secondary};
 `;
 
-export default function SignInButton({ name }) {
-  return <Button>{name}</Button>;
-}
+export default Button;

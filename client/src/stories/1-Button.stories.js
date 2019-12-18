@@ -8,5 +8,5 @@ export default {
 };
 
 export function SignInButtonDark() {
-  return <SignInButton name={text('Button', 'Sign in')}></SignInButton>;
+  return <SignInButton>{text('Button', 'Sign in')}</SignInButton>;
 }

@@ -2,7 +2,6 @@ import React from 'react';
 import ProfileList from '../components/ProfileList';
 import FriendsProfile from '../components/Profile';
 import { withKnobs, text } from '@storybook/addon-knobs';
-import styled from '@emotion/styled';
 
 export default {
   title: 'Friendslist',

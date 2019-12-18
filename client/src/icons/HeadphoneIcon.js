@@ -4,8 +4,8 @@ export default function HeadphoneIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="48pt"
-      height="48pt"
+      width="30pt"
+      height="30pt"
       viewBox="0 0 48 48"
       version="1.1"
     >

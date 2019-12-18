@@ -13,7 +13,7 @@ export const Container = styled.div`
 
 export const Card = styled.div`
   display: grid;
-  justify-content: center;
+  justify-items: center;
   align-items: center;
   width: 60px;
   height: 60px;
