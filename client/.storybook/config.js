@@ -1,6 +1,6 @@
 import React from 'react';
 import { configure, addDecorator } from '@storybook/react';
-import styled, { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'emotion-theming';
 import GlobalStyles from '../src/GlobalStyles';
 import theme from '../src/components/themes/theme';
 import { withKnobs } from '@storybook/addon-knobs';
