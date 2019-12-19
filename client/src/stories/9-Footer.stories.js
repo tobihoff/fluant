@@ -1,7 +1,8 @@
 import React from 'react';
-import { Footer, Profile, Theme, Study } from '../components/Footer';
+import { Footer, Profile, Button } from '../components/Footer';
 import StudentIcon from '../icons/StudentIcon';
 import SunIcon from '../icons/SunIcon';
+import ProfileIcon from '../icons/ProfileIcon';
 
 export default {
   title: 'Footer'
@@ -10,16 +11,15 @@ export default {
 export const FooterNavigation = () => (
   <>
     <Footer>
-      <Theme>
+      <Button>
         <SunIcon />
-      </Theme>
-      <Profile
-        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
-        alt="Maria"
-      />
-      <Study>
+      </Button>
+      <Profile>
+        <ProfileIcon />
+      </Profile>
+      <Button>
         <StudentIcon />
-      </Study>
+      </Button>
     </Footer>
   </>
 );
