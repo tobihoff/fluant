@@ -1,5 +1,6 @@
 import React from 'react';
-import { Footer, Profile, Button } from '../components/Footer';
+import { ProfileButton, FooterButton } from '../components/Buttons/Buttons';
+import Footer from '../components/Footer/Footer';
 import StudentIcon from '../icons/StudentIcon';
 import SunIcon from '../icons/SunIcon';
 import ProfileIcon from '../icons/ProfileIcon';
@@ -11,15 +12,15 @@ export default {
 export const FooterNavigation = () => (
   <>
     <Footer>
-      <Button>
+      <FooterButton>
         <SunIcon />
-      </Button>
-      <Profile>
+      </FooterButton>
+      <ProfileButton>
         <ProfileIcon />
-      </Profile>
-      <Button>
+      </ProfileButton>
+      <FooterButton>
         <StudentIcon />
-      </Button>
+      </FooterButton>
     </Footer>
   </>
 );
