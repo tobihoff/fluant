@@ -17,6 +17,7 @@ export const Profile = styled.img`
   border: none;
   border-radius: 50%;
   border: 2px solid ${props => props.theme.secondary};
+  box-shadow: 0 0 20px 5px ${props => props.theme.third};
 `;
 
 export const ProfileInfo = styled.p`

@@ -20,5 +20,5 @@ export const Card = styled.div`
   margin-top: 10px;
   background-color: white;
   border: none;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 0 1px 0.1px ${props => props.theme.third};
 `;
