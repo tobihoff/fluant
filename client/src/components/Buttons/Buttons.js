@@ -33,4 +33,13 @@ export const FooterButton = styled.button`
   text-align: center;
 `;
 
+export const BookmarkButton = styled.button`
+  width: 30px;
+  height: 30px;
+  background: ${props => props.theme.primary};
+  border: none;
+  outline: none;
+  text-align: center;
+`;
+
 export default Button;

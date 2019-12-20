@@ -4,8 +4,8 @@ export default function BookmarkIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="32pt"
-      height="32pt"
+      width="24pt"
+      height="24pt"
       viewBox="0 0 32 32"
       version="1.1"
     >
