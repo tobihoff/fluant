@@ -2,25 +2,32 @@ import styled from '@emotion/styled';
 
 export const Navigation = styled.nav`
   max-width: 240px;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  margin: 0 auto;
+  width: 100%;
 `;
 
 export const UnorderedList = styled.ul`
-  margin: 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0 auto;
   padding: 0;
   list-style: none;
   font-size: 12px;
-  margin: 0px 0px 5px 0px;
+  width: 100%;
 `;
 
 export const ListElements = styled.li`
-  display: inline-block;
   text-align: center;
   border: 2px solid ${props => props.border};
-  margin: 1px;
-  padding: 0px 2px;
   cursor: pointer;
-  min-width: 60px;
+  min-width: 78px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+`;
+
+export const ListElementFriends = styled(ListElements)`
+  border-left: none;
+  border-right: none;
+  margin-left: -4px;
+  margin-right: -4px;
 `;

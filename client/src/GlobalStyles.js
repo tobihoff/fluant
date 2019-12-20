@@ -2,7 +2,7 @@ import React from 'react';
 import { Global, css } from '@emotion/core';
 import { useTheme } from 'emotion-theming';
 
-export default function GlobalStyles() {
+function GlobalStyles() {
   const theme = useTheme();
   return (
     <Global
@@ -15,7 +15,7 @@ export default function GlobalStyles() {
         body {
           margin: 0;
           font-family: 'Montserrat', sans-serif;
-          background-color: ${theme.primary};
+          background: ${theme.primary};
           color: ${theme.secondary};
           font-size: 20px;
           -webkit-font-smoothing: antialiased;
@@ -25,3 +25,5 @@ export default function GlobalStyles() {
     />
   );
 }
+
+export default GlobalStyles;

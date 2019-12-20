@@ -4,8 +4,8 @@ export default function ProfileIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="52pt"
-      height="52pt"
+      width="40pt"
+      height="40pt"
       viewBox="0 0 52 52"
       version="1.1"
     >

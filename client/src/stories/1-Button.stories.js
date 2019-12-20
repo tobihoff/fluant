@@ -1,5 +1,5 @@
 import React from 'react';
-import SignInButton from '../components/SignInButton';
+import Button from '../components/Buttons/Buttons';
 import { withKnobs, text } from '@storybook/addon-knobs';
 
 export default {
@@ -8,5 +8,5 @@ export default {
 };
 
 export function SignInButtonDark() {
-  return <SignInButton>{text('Button', 'Sign in')}</SignInButton>;
+  return <Button>{text('Button', 'Sign in')}</Button>;
 }
