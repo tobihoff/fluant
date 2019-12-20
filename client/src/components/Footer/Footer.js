@@ -3,19 +3,25 @@ import styled from '@emotion/styled';
 const Footer = styled.footer`
   left: 0;
   right: 0;
-  height: 55px;
+  height: 42px;
   width: 100%;
   margin: 0 auto;
-  top: 0;
-  position: fixed;
   background: ${props => props.theme.secondary};
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 3px solid black;
+  border-top: 3px solid black;
   padding-left: 10px;
   padding-right: 10px;
+  bottom: 0;
+  position: absolute;
+`;
+
+export const ProfileButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export default Footer;

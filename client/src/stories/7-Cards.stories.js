@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Card } from '../components/Cards';
+import { CardContainer, Card } from '../components/Cards/Cards';
 import HundredIcon from '../icons/HundredIcon';
 import QueryIcon from '../icons/QueryIcon';
 import HeadphoneIcon from '../icons/HeadphoneIcon';
@@ -12,7 +12,7 @@ export default {
 };
 
 export const CardNavigation = () => (
-  <Container>
+  <CardContainer>
     <Card>
       <HeadphoneIcon />
     </Card>
@@ -31,5 +31,5 @@ export const CardNavigation = () => (
     <Card>
       <GameIcon />
     </Card>
-  </Container>
+  </CardContainer>
 );

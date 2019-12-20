@@ -12,8 +12,8 @@ const Button = styled.button`
 `;
 
 export const ProfileButton = styled.button`
-  width: 90px;
-  height: 90px;
+  width: 70px;
+  height: 70px;
   object-fit: cover;
   border: 3px solid ${props => props.theme.border};
   border-radius: 50%;
@@ -21,12 +21,14 @@ export const ProfileButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 32px;
+  bottom: 0;
+  position: absolute;
+  background-color: white;
 `;
 
 export const FooterButton = styled.button`
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   background: ${props => props.theme.secondary};
   border: none;
   outline: none;
@@ -39,7 +41,6 @@ export const BookmarkButton = styled.button`
   background: ${props => props.theme.primary};
   border: none;
   outline: none;
-  text-align: center;
 `;
 
 export default Button;
