@@ -15,4 +15,12 @@ export const LoginPageContainer = styled(LandingPageContainer)`
   padding-bottom: 50px;
 `;
 
+export const BadgeContainer = styled(LandingPageContainer)`
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  height: 80vh;
+  border: 5px double ${props => props.theme.border};
+`;
+
 export default LandingPageContainer;
