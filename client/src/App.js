@@ -10,8 +10,8 @@ function App() {
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
-        <LandingPage />
-        {/* <ProfilePage /> */}
+        {/* <LandingPage /> */}
+        <ProfilePage />
       </ThemeProvider>
     </>
   );
