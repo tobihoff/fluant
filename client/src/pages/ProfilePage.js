@@ -5,24 +5,21 @@ import BookmarkIcon from '../icons/BookmarkIcon';
 import fluant from '../resources/fluant.png';
 import { BookmarkButton } from '../components/Buttons/Buttons';
 import { Profile, ProfileContainer, ProfileInfo } from '../components/Profile';
+import ProfileCards from '../components/Profile/ProfileCards';
+import ProfileFriends from '../components/Profile/ProfileFriends';
+import ProfileScores from '../components/Profile/ProfileScores';
 import Footer, { ProfileButtonContainer } from '../components/Footer/Footer';
 import { ProfileButton, FooterButton } from '../components/Buttons/Buttons';
 import SunIcon from '../icons/SunIcon';
 import TranslateIcon from '../icons/TranslateIcon';
 import StudentIcon from '../icons/StudentIcon';
-import { CardContainer, Card } from '../components/Cards/Cards';
-import HundredIcon from '../icons/HundredIcon';
-import QueryIcon from '../icons/QueryIcon';
-import HeadphoneIcon from '../icons/HeadphoneIcon';
-import StarIcon from '../icons/StarIcon';
-import FriendsIcon from '../icons/FriendsIcon';
-import GameIcon from '../icons/GameIcon';
 import {
   Navigation,
   UnorderedList,
   ListElements,
   ListElementFriends
 } from '../components/ProfileNavigation';
+import { Route, Switch, Link, BrowserRouter as Router } from 'react-router-dom';
 
 const LogoImage = styled.img`
   height: 200px;
@@ -51,33 +48,32 @@ export default function ProfilePage() {
         />
         <ProfileInfo>Julia Goldfinger</ProfileInfo>
       </ProfileContainer>
-      <Navigation>
-        <UnorderedList>
-          <ListElements>Learn</ListElements>
-          <ListElementFriends>Friends</ListElementFriends>
-          <ListElements>Scores</ListElements>
-        </UnorderedList>
-      </Navigation>
-      <CardContainer>
-        <Card>
-          <GameIcon />
-        </Card>
-        <Card>
-          <HundredIcon />
-        </Card>
-        <Card>
-          <FriendsIcon />
-        </Card>
-        <Card>
-          <StarIcon />
-        </Card>
-        <Card>
-          <QueryIcon />
-        </Card>
-        <Card>
-          <HeadphoneIcon />
-        </Card>
-      </CardContainer>
+      <Router>
+        <Navigation>
+          <UnorderedList>
+            <ListElements>
+              <Link to="/learn">Learn</Link>
+            </ListElements>
+            <ListElementFriends>
+              <Link to="/friends">Friends</Link>
+            </ListElementFriends>
+            <ListElements>
+              <Link to="/scores">Scores</Link>
+            </ListElements>
+          </UnorderedList>
+        </Navigation>
+        <Switch>
+          <Route exact path="/learn" component={ProfileCards}>
+            <ProfileCards />
+          </Route>
+          <Route path="/friends" component={ProfileFriends}>
+            <ProfileFriends />
+          </Route>
+          <Route exact path="/scores" component={ProfileScores}>
+            <ProfileScores />
+          </Route>
+        </Switch>
+      </Router>
       <Footer>
         <FooterButton>
           <SunIcon />
