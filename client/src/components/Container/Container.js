@@ -6,8 +6,13 @@ const LandingPageContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 100vw;
-  height: 101vh;
+  height: 100vh;
   background: ${props => props.theme.secondary};
+`;
+
+export const LoginPageContainer = styled(LandingPageContainer)`
+  border: 5px solid ${props => props.theme.primary};
+  padding-bottom: 50px;
 `;
 
 export default LandingPageContainer;
