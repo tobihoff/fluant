@@ -1,5 +1,16 @@
 import React from 'react';
+import { CardContainer } from '../Cards/Cards';
+import ProfileList from '../ProfileList';
+import { FriendsProfile, ProfileInfo, ProfileScore } from '../Profile';
 
-export default function ProfileScores() {
-  return <h1>Maschine</h1>;
+export default function ProfileFriends() {
+  return (
+    <CardContainer>
+      <ProfileList>
+        <FriendsProfile />
+        <ProfileInfo>BrüllMaus</ProfileInfo>
+        <ProfileScore>90000XP</ProfileScore>
+      </ProfileList>
+    </CardContainer>
+  );
 }
