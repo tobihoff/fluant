@@ -15,8 +15,8 @@ function GlobalStyles() {
         body {
           margin: 0;
           font-family: 'Montserrat', sans-serif;
-          background: ${theme.primary};
-          color: ${theme.secondary};
+          background: ${theme.light.primary};
+          color: ${theme.light.secondary};
           font-size: 20px;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;

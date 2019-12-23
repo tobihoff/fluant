@@ -19,7 +19,7 @@ export const UnorderedList = styled.ul`
 
 export const ListElements = styled.li`
   text-align: center;
-  border: 2px solid ${props => props.border};
+  border: 2px solid ${props => props.theme.border};
   cursor: pointer;
   min-width: 78px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);

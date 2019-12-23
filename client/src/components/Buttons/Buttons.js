@@ -6,16 +6,16 @@ const Button = styled.button`
   text-align: center;
   min-width: 65px;
   height: 25px;
-  border: 1px solid ${({ theme }) => theme.border};
-  color: ${({ theme }) => theme.primary};
-  background-color: ${({ theme }) => theme.secondary};
+  border: 1px solid ${({ theme }) => theme.light.border};
+  color: ${({ theme }) => theme.light.primary};
+  background-color: ${({ theme }) => theme.light.secondary};
   outline: none;
 `;
 
 export const LoginButton = styled(Button)`
-  background-color: ${({ theme }) => theme.border};
-  color: ${({ theme }) => theme.primary};
-  border: 1px solid ${({ theme }) => theme.primary};
+  background-color: ${({ theme }) => theme.light.border};
+  color: ${({ theme }) => theme.light.primary};
+  border: 1px solid ${({ theme }) => theme.light.primary};
   margin-top: 10px;
 `;
 
@@ -23,7 +23,7 @@ export const ProfileButton = styled.button`
   width: 70px;
   height: 70px;
   object-fit: cover;
-  border: 3px solid ${props => props.theme.border};
+  border: 3px solid ${props => props.theme.light.border};
   border-radius: 50%;
   outline: none;
   display: flex;
@@ -46,7 +46,7 @@ export const FooterButton = styled.button`
 export const BookmarkButton = styled.button`
   width: 30px;
   height: 30px;
-  background: ${props => props.theme.primary};
+  background: ${props => props.theme.light.primary};
   border: none;
   outline: none;
 `;
