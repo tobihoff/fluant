@@ -12,13 +12,6 @@ const Button = styled.button`
   outline: none;
 `;
 
-export const LoginButton = styled(Button)`
-  background-color: ${({ theme }) => theme.light.border};
-  color: ${({ theme }) => theme.light.primary};
-  border: 1px solid ${({ theme }) => theme.light.primary};
-  margin-top: 10px;
-`;
-
 export const ProfileButton = styled.button`
   width: 70px;
   height: 70px;
