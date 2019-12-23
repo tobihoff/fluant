@@ -10,7 +10,7 @@ import ProfileFriends from '../components/Profile/ProfileFriends';
 import ProfileScores from '../components/Profile/ProfileScores';
 import Footer, { ProfileButtonContainer } from '../components/Footer/Footer';
 import { ProfileButton, FooterButton } from '../components/Buttons/Buttons';
-import SunIcon from '../icons/SunIcon';
+import CircleIcon from '../icons/CircleIcon';
 import TranslateIcon from '../icons/TranslateIcon';
 import StudentIcon from '../icons/StudentIcon';
 import {
@@ -21,7 +21,7 @@ import {
 } from '../components/ProfileNavigation';
 import { Route, Switch, Link, BrowserRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from 'emotion-theming';
-import theme, { dark } from '../components/themes/theme';
+import theme from '../components/themes/theme';
 
 const LogoImage = styled.img`
   height: 200px;
@@ -29,18 +29,18 @@ const LogoImage = styled.img`
 `;
 
 export default function ProfilePage() {
-  const [theme, setTheme] = React.useState({ theme });
+  const [themeColor, setThemeColor] = React.useState(theme.light);
 
   function handleThemeClick() {
-    if (theme === theme) {
-      setThemeColor(dark);
+    if (themeColor === theme.light) {
+      setThemeColor(theme.dark);
     } else {
-      setTheme(theme);
+      setThemeColor(theme.light);
     }
   }
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={themeColor}>
       <Container>
         <Header>
           <Logo>
@@ -87,8 +87,8 @@ export default function ProfilePage() {
         </Switch>
       </Router>
       <Footer>
-        <FooterButton>
-          <SunIcon />
+        <FooterButton onClick={handleThemeClick}>
+          <CircleIcon />
         </FooterButton>
         <ProfileButtonContainer>
           <ProfileButton>
