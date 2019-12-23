@@ -20,6 +20,8 @@ import {
   ListElementFriends
 } from '../components/ProfileNavigation';
 import { Route, Switch, Link, BrowserRouter as Router } from 'react-router-dom';
+import { ThemeProvider } from 'emotion-theming';
+import theme, { dark } from '../components/themes/theme';
 
 const LogoImage = styled.img`
   height: 200px;
@@ -27,8 +29,18 @@ const LogoImage = styled.img`
 `;
 
 export default function ProfilePage() {
+  const [theme, setTheme] = React.useState({ theme });
+
+  function handleThemeClick() {
+    if (theme === theme) {
+      setThemeColor(dark);
+    } else {
+      setTheme(theme);
+    }
+  }
+
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <Container>
         <Header>
           <Logo>
@@ -87,6 +99,6 @@ export default function ProfilePage() {
           <StudentIcon />
         </FooterButton>
       </Footer>
-    </>
+    </ThemeProvider>
   );
 }

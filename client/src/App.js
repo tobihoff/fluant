@@ -7,7 +7,7 @@ import DictonaryPage from './pages/DictonaryPage';
 function App() {
   return (
     <>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme.light}>
         <GlobalStyles />
         <DictonaryPage />
       </ThemeProvider>
