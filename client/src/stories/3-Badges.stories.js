@@ -1,14 +1,14 @@
 import React from 'react';
-import Badge from '../components/Badge';
+import Badge from '../components/Badges/Badge';
 import RemoveIcon from '../icons/RemoveIcon';
-import ListBadges from '../components/ListBadges';
+import BadgeContainer from '../components/Container/Container';
 
 export default {
   title: 'Badge'
 };
 
 export const Vocabulary = () => (
-  <ListBadges>
+  <BadgeContainer>
     <Badge>
       Hello <RemoveIcon />
     </Badge>
@@ -27,5 +27,5 @@ export const Vocabulary = () => (
     <Badge>
       you <RemoveIcon />
     </Badge>
-  </ListBadges>
+  </BadgeContainer>
 );

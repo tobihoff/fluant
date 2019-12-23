@@ -9,6 +9,14 @@ const Button = styled.button`
   border: 1px solid ${({ theme }) => theme.border};
   color: ${({ theme }) => theme.primary};
   background-color: ${({ theme }) => theme.secondary};
+  outline: none;
+`;
+
+export const LoginButton = styled(Button)`
+  background-color: ${({ theme }) => theme.border};
+  color: ${({ theme }) => theme.primary};
+  border: 1px solid ${({ theme }) => theme.primary};
+  margin-top: 10px;
 `;
 
 export const ProfileButton = styled.button`

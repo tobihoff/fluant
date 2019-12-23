@@ -1,17 +1,15 @@
 import React from 'react';
 import GlobalStyles from './GlobalStyles';
 import theme from './components/themes/theme';
-import ProfilePage from '../src/pages/ProfilePage';
 import { ThemeProvider } from 'emotion-theming';
-import LandingPage from '../src/pages/LandingPage';
+import DictonaryPage from './pages/DictonaryPage';
 
 function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
-        {/* <LandingPage /> */}
-        <ProfilePage />
+        <DictonaryPage />
       </ThemeProvider>
     </>
   );

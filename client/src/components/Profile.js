@@ -20,14 +20,20 @@ export const Profile = styled.img`
   box-shadow: 0 0 20px 5px ${props => props.theme.third};
 `;
 
-export const ProfileInfo = styled.p`
-  margin-bottom: 10px;
-  font-size: 15px;
-`;
-
 export const FriendsProfile = styled(Profile)`
   border: 2px solid ${props => props.theme.secondary};
   box-shadow: none;
+  width: 40px;
+  height: 40px;
+`;
+
+export const ProfileInfo = styled.p`
+  font-size: 12px;
+`;
+
+export const ProfileScore = styled(ProfileInfo)`
+  color: ${props => props.theme.third};
+  font-size: 10px;
 `;
 
 export default Profile;

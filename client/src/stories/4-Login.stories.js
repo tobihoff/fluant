@@ -1,5 +1,5 @@
 import React from 'react';
-import LoginName from '../components/Login';
+import LoginInput from '../components/Inputs/Login';
 
 export default {
   title: 'Login'
@@ -7,7 +7,7 @@ export default {
 
 export const LoginArea = () => (
   <>
-    <LoginName type="text" placeholder="Name" />
-    <LoginName type="password" placeholder="Password" />
+    <LoginInput type="text" placeholder="Name" />
+    <LoginInput type="password" placeholder="Password" />
   </>
 );

@@ -11,6 +11,7 @@ export const CardContainer = styled.div`
   padding: 5px;
   text-align: center;
   margin-top: 30px;
+  border: 2px dashed red;
 `;
 
 export const Card = styled.div`
