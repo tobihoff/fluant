@@ -6,7 +6,8 @@ const app = express();
 //Connect Database
 connectDB();
 
-const Port = 7100;
+// Init Middleware
+app.use(express.json({ extended: false }));
 
 app.get("/", (req, res) => res.send("API is running"));
 
@@ -14,5 +15,7 @@ app.get("/", (req, res) => res.send("API is running"));
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/auth", require("./routes/api/auth"));
 app.use("/api/profile", require("./routes/api/profiles"));
+
+const Port = 7100;
 
 app.listen(Port, () => console.log(`Server is running on Port ${Port}`));

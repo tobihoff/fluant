@@ -6,13 +6,13 @@ const connectDB = async () => {
   try {
     await mongoose.connect(db, {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
+      useCreateIndex: true
     });
-    console.log("MongoDB conncted");
+    console.log("MongoDB connected");
   } catch (err) {
-    console.error(err.message);
-    //Exit process with failure
-    process.exit(1);
+    console.error("MongoDB error", err);
+    throw err;
   }
 };
 
