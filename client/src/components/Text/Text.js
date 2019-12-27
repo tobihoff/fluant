@@ -2,11 +2,13 @@ import styled from '@emotion/styled';
 
 const Hello = styled.h1`
   color: ${props => props.theme.light.primary};
+  margin-top: 30px;
 `;
 
 export const Text = styled.p`
   color: ${props => props.theme.light.primary};
-  font-size: 10px;
+  font-size: 12px;
+  margin-bottom: 30px;
 `;
 
 export const Dictonary = styled.h3`
