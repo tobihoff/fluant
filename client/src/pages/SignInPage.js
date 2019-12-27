@@ -4,15 +4,17 @@ import LoginInput, { Label } from '../components/Inputs/Login';
 import Hello, { Text } from '../components/Text/Text';
 import Form from '../components/Container/Form';
 import { LogInButton } from '../components/Buttons/LogInButton';
-import { SignInContainer } from '../components/Container/Container';
 import { ToSignInButton } from '../components/Buttons/Buttons';
+import { SignInContainer } from '../components/Container/Container';
 
 export default function LoginPage() {
+  const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
   const handelSubmit = e => {
     e.preventDefault();
+    setName('');
     setEmail('');
     setPassword('');
   };
@@ -20,8 +22,18 @@ export default function LoginPage() {
   return (
     <LoginPageContainer>
       <Hello>Hi!</Hello>
-      <Text>Login in to your account</Text>
+      <Text>Sign in to your account</Text>
       <Form onSubmit={handelSubmit}>
+        <Label htmlFor="name">Your Name?</Label>
+        <LoginInput
+          placeholder="Name"
+          type="text"
+          name="name"
+          id="name"
+          value={name}
+          onChange={e => setName(e.target.value)}
+          required
+        />
         <Label htmlFor="email">Your E-Mail?</Label>
         <LoginInput
           placeholder="E-Mail"
@@ -44,9 +56,9 @@ export default function LoginPage() {
           required
         />
       </Form>
-      <LogInButton type="submit">Log in</LogInButton>
+      <LogInButton type="submit">Sign in</LogInButton>
       <SignInContainer>
-        <ToSignInButton>Don't you have an account yet?</ToSignInButton>
+        <ToSignInButton>Back to the Login!</ToSignInButton>
       </SignInContainer>
     </LoginPageContainer>
   );

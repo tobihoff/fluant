@@ -19,4 +19,5 @@ export const Dictonary = styled.h3`
   max-width: 240px;
   height: 20vh;
 `;
+
 export default Hello;

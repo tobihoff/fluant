@@ -6,21 +6,21 @@ const LoginButton = styled.button`
   text-align: center;
   min-width: 65px;
   height: 25px;
-  background-color: ${({ theme }) => theme.light.border};
-  color: ${({ theme }) => theme.light.primary};
-  border: 1px solid ${({ theme }) => theme.light.primary};
+  background-color: ${({ theme }) => theme.light.third};
+  color: ${({ theme }) => theme.light.border};
+  border: 1px solid ${({ theme }) => theme.light.border};
   margin-top: 10px;
   font-weight: bolder;
   letter-spacing: 0.5px;
   cursor: pointer;
   outline: none;
-  &:hover {
-    background-color: ${({ theme }) => theme.light.third};
+  :hover {
+    background-color: ${({ theme }) => theme.light.primary};
     color: black;
     border: 1px solid black;
   }
 `;
 
-export const SignInButton = ({ children, ...props }) => (
+export const LogInButton = ({ children, ...props }) => (
   <LoginButton {...props}>{children}</LoginButton>
 );
