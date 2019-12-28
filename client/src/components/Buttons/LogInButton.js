@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from '@emotion/styled';
 
-const LoginButton = styled.button`
+const LoginButton = styled.input`
   display: inline-block;
   text-align: center;
   min-width: 65px;
@@ -21,6 +20,4 @@ const LoginButton = styled.button`
   }
 `;
 
-export const LogInButton = ({ children, ...props }) => (
-  <LoginButton {...props}>{children}</LoginButton>
-);
+export default LoginButton;

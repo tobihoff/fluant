@@ -11,7 +11,8 @@
     "server": "nodemon server.js",
     "storybook": "cd client && npm run storybook",
     "test": "cd client && npm test",
-    "postinstall": "cd client && npm install"
+    "postinstall": "cd client && npm install",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,7 @@
     "mongoose": "^5.8.2"
   },
   "devDependencies": {
+    "concurrently": "^5.0.2",
     "nodemon": "^2.0.2",
     "prettier": "^1.19.1"
   }

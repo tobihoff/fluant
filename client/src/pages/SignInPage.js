@@ -3,21 +3,36 @@ import { LoginPageContainer } from '../components/Container/Container';
 import LoginInput, { Label } from '../components/Inputs/Login';
 import Hello, { Text } from '../components/Text/Text';
 import Form from '../components/Container/Form';
-import { LogInButton } from '../components/Buttons/LogInButton';
 import { ToSignInButton } from '../components/Buttons/Buttons';
 import { SignInContainer } from '../components/Container/Container';
+import LoginButton from '../components/Buttons/LogInButton';
 
 export default function LoginPage() {
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
-  const handelSubmit = e => {
-    e.preventDefault();
+  async function handelSubmit(event) {
+    event.preventDefault();
+    console.log(name, email, password);
+    try {
+      const response = await fetch('http://localhost:7100/api/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, email, password })
+      });
+
+      const data = await response.json();
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
     setName('');
     setEmail('');
     setPassword('');
-  };
+  }
 
   return (
     <LoginPageContainer>
@@ -55,8 +70,8 @@ export default function LoginPage() {
           onChange={e => setPassword(e.target.value)}
           required
         />
+        <LoginButton type="submit" value="Sign in"></LoginButton>
       </Form>
-      <LogInButton type="submit">Sign in</LogInButton>
       <SignInContainer>
         <ToSignInButton>Back to the Login!</ToSignInButton>
       </SignInContainer>

@@ -13,8 +13,7 @@ export default function LoginPage() {
 
   const handelSubmit = e => {
     e.preventDefault();
-    setEmail('');
-    setPassword('');
+    console.log({ email, password });
   };
 
   return (
@@ -43,8 +42,8 @@ export default function LoginPage() {
           onChange={e => setPassword(e.target.value)}
           required
         />
+        <LoginButton type="submit" value="Login"></LoginButton>
       </Form>
-      <LogInButton type="submit">Log in</LogInButton>
       <SignInContainer>
         <ToSignInButton>Don't you have an account yet?</ToSignInButton>
       </SignInContainer>
