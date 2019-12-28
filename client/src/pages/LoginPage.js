@@ -3,18 +3,33 @@ import { LoginPageContainer } from '../components/Container/Container';
 import LoginInput, { Label } from '../components/Inputs/Login';
 import Hello, { Text } from '../components/Text/Text';
 import Form from '../components/Container/Form';
-import { LogInButton } from '../components/Buttons/LogInButton';
 import { SignInContainer } from '../components/Container/Container';
 import { ToSignInButton } from '../components/Buttons/Buttons';
+import LoginButton from '../components/Buttons/LogInButton';
 
 export default function LoginPage() {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
-  const handelSubmit = e => {
-    e.preventDefault();
-    console.log({ email, password });
-  };
+  async function handelSubmit(event) {
+    event.preventDefault();
+    try {
+      const response = await fetch('http://localhost:7100/api/auth', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await response.json();
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+    setEmail('');
+    setPassword('');
+  }
 
   return (
     <LoginPageContainer>
