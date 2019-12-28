@@ -3,23 +3,25 @@ import { LoginPageContainer } from '../components/Container/Container';
 import LoginInput, { Label } from '../components/Inputs/Login';
 import Hello, { Text } from '../components/Text/Text';
 import Form from '../components/Container/Form';
-import { SignInContainer } from '../components/Container/Container';
 import { ToSignInButton } from '../components/Buttons/Buttons';
+import { SignInContainer } from '../components/Container/Container';
 import LoginButton from '../components/Buttons/LogInButton';
 
 export default function LoginPage() {
+  const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
   async function handelSubmit(event) {
     event.preventDefault();
+    console.log(name, email, password);
     try {
-      const response = await fetch('http://localhost:7100/api/auth', {
+      const response = await fetch('http://localhost:7100/api/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ name, email, password })
       });
 
       const data = await response.json();
@@ -27,6 +29,7 @@ export default function LoginPage() {
     } catch (err) {
       console.log(err);
     }
+    setName('');
     setEmail('');
     setPassword('');
   }
@@ -34,8 +37,18 @@ export default function LoginPage() {
   return (
     <LoginPageContainer>
       <Hello>Hi!</Hello>
-      <Text>Login in to your account</Text>
+      <Text>Sign in to your account</Text>
       <Form onSubmit={handelSubmit}>
+        <Label htmlFor="name">Your Name?</Label>
+        <LoginInput
+          placeholder="Name"
+          type="text"
+          name="name"
+          id="name"
+          value={name}
+          onChange={e => setName(e.target.value)}
+          required
+        />
         <Label htmlFor="email">Your E-Mail?</Label>
         <LoginInput
           placeholder="E-Mail"
@@ -57,10 +70,10 @@ export default function LoginPage() {
           onChange={e => setPassword(e.target.value)}
           required
         />
-        <LoginButton type="submit" value="Login"></LoginButton>
+        <LoginButton type="submit" value="Sign in"></LoginButton>
       </Form>
       <SignInContainer>
-        <ToSignInButton>Don't you have an account yet?</ToSignInButton>
+        <ToSignInButton>Back to the Login!</ToSignInButton>
       </SignInContainer>
     </LoginPageContainer>
   );

@@ -12,7 +12,7 @@ const LandingPageContainer = styled.div`
 
 export const LoginPageContainer = styled(LandingPageContainer)`
   border: 5px solid ${props => props.theme.light.primary};
-  padding-bottom: 50px;
+  padding-bottom: 80px;
 `;
 
 export const BadgeContainer = styled(LandingPageContainer)`
@@ -21,6 +21,13 @@ export const BadgeContainer = styled(LandingPageContainer)`
   flex-wrap: wrap;
   height: 80vh;
   border: 5px double ${props => props.theme.light.border};
+`;
+
+export const SignInContainer = styled(LandingPageContainer)`
+  height: 10px;
+  width: 90vw;
+  flex-direction: row;
+  margin-top: 20px;
 `;
 
 export default LandingPageContainer;
