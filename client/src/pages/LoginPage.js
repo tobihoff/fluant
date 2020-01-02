@@ -60,7 +60,7 @@ export default function LoginPage() {
         <LoginButton type="submit" value="Login"></LoginButton>
       </Form>
       <SignInContainer>
-        <ToSignInButton>Don't you have an account yet?</ToSignInButton>
+        <ToSignInButton to="/register">Don't you have an account yet?</ToSignInButton>
       </SignInContainer>
     </LoginPageContainer>
   );

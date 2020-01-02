@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
 
 //Basic sytle
 const Button = styled.button`
@@ -44,25 +45,15 @@ export const BookmarkButton = styled.button`
   outline: none;
 `;
 
-export const ToSignInButton = styled(FooterButton)`
+export const ToSignInButton = styled(Link)`
+  text-align: center;
   width: auto;
   height: auto;
   background: ${props => props.theme.light.secondary};
   color: ${props => props.theme.light.primary};
   font-weight: bold;
-  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
-  outline: 0.5px solid;
-  outline-color: rgba(255, 255, 255, 0.5);
-  outline-offset: 0px;
-  text-shadow: none;
-  transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
-  :hover {
-    border: 1px solid;
-    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
-    outline-color: rgba(255, 255, 255, 0);
-    outline-offset: 15px;
-    text-shadow: 1px 1px 2px #427388;
-  }
+  font-size: 12px;
+  text-decoration-line: none;
 `;
 
 export default Button;
