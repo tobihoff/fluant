@@ -11,6 +11,7 @@ app.use(express.json({ extended: false }));
 
 app.get("/", (req, res) => res.send("API is running"));
 
+//Cors issue
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*"); //any Domain
   res.setHeader(
@@ -24,7 +25,6 @@ app.use((req, res, next) => {
 //Define Routes
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/auth", require("./routes/api/auth"));
-app.use("/api/profile", require("./routes/api/profiles"));
 
 const Port = 7100;
 
