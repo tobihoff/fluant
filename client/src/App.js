@@ -20,7 +20,7 @@ function App() {
             <Route exact path="/register">
               <SignInPage />
             </Route>
-            <Route exact path="/ProfilePage">
+            <Route exact path="/profile">
               <ProfilePage />
             </Route>
           </Switch>

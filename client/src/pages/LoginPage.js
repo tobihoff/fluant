@@ -1,5 +1,6 @@
 import React from 'react';
 import { LoginPageContainer } from '../components/Container/Container';
+import { Redirect } from 'react-router-dom';
 import LoginInput, { Label } from '../components/Inputs/Login';
 import Hello, { Text } from '../components/Text/Text';
 import Form from '../components/Container/Form';
@@ -10,6 +11,7 @@ import LoginButton from '../components/Buttons/LogInButton';
 export default function LoginPage() {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [login, setLogin] = React.useState(false);
 
   async function handelSubmit(event) {
     event.preventDefault();
@@ -23,12 +25,26 @@ export default function LoginPage() {
       });
 
       const data = await response.json();
+      if (data.token) {
+        localStorage.setItem(
+          'login',
+          JSON.stringify({
+            login: true,
+            token: data.token
+          })
+        );
+        setLogin(true);
+      }
       console.log(data);
     } catch (err) {
       console.log(err);
     }
     setEmail('');
     setPassword('');
+  }
+
+  if (login) {
+    return <Redirect to="/profile" />;
   }
 
   return (
@@ -48,7 +64,6 @@ export default function LoginPage() {
         />
         <Label htmlFor="password">Your Password?</Label>
         <LoginInput
-          oginInput
           placeholder="Password"
           type="password"
           name="password"
