@@ -7,11 +7,15 @@ import Form from '../components/Container/Form';
 import { SignInContainer } from '../components/Container/Container';
 import { ToSignInButton } from '../components/Buttons/Buttons';
 import LoginButton from '../components/Buttons/LogInButton';
+import { UserContext } from '../context/user';
 
 export default function LoginPage() {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [login, setLogin] = React.useState(false);
+  const [user, setUser] = React.useContext(UserContext);
+
+  console.log('user', user);
 
   async function handelSubmit(event) {
     event.preventDefault();
@@ -42,6 +46,25 @@ export default function LoginPage() {
     setEmail('');
     setPassword('');
   }
+
+  // async function loadUser() {
+  //   const auth = localStorage.getItem('login');
+  //   const res = await fetch('http://localhost:7100/api/auth', {
+  //     method: 'GET',
+  //     headers: {
+  //       Accept: 'application/json',
+  //       'Content-Type': 'application/json',
+  //       Authorization: 'Bearer ' + auth
+  //     }
+  //   });
+  //   const user = await res.json();
+  //   setUser(state => ({
+  //     ...state,
+  //     login: true,
+  //     currentUser: user
+  //   }));
+  //   console.log(user);
+  // }
 
   if (login) {
     return <Redirect to="/profile" />;

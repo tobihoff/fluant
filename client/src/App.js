@@ -6,26 +6,29 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import LoginPage from '../src/pages/LoginPage';
 import SignInPage from '../src/pages/SignInPage';
 import ProfilePage from '../src/pages/ProfilePage';
+import { UserProvider } from '../src/context/user';
 
 function App() {
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <GlobalStyles />
-        <Router>
-          <Switch>
-            <Route exact path="/login">
-              <LoginPage />
-            </Route>
-            <Route exact path="/register">
-              <SignInPage />
-            </Route>
-            <Route exact path="/profile">
-              <ProfilePage />
-            </Route>
-          </Switch>
-        </Router>
-      </ThemeProvider>
+      <UserProvider>
+        <ThemeProvider theme={theme}>
+          <GlobalStyles />
+          <Router>
+            <Switch>
+              <Route exact path="/login">
+                <LoginPage />
+              </Route>
+              <Route exact path="/register">
+                <SignInPage />
+              </Route>
+              <Route exact path="/profile">
+                <ProfilePage />
+              </Route>
+            </Switch>
+          </Router>
+        </ThemeProvider>
+      </UserProvider>
     </>
   );
 }
