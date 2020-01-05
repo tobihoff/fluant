@@ -15,8 +15,6 @@ export default function LoginPage() {
   const [login, setLogin] = React.useState(false);
   const [user, setUser] = React.useContext(UserContext);
 
-  console.log('user', user);
-
   async function handelSubmit(event) {
     event.preventDefault();
     try {
@@ -30,14 +28,7 @@ export default function LoginPage() {
 
       const data = await response.json();
       if (data.token) {
-        localStorage.setItem(
-          'login',
-          JSON.stringify({
-            login: true,
-            token: data.token
-          })
-        );
-        setLogin(true);
+        localStorage.setItem('token', data.token);
       }
       console.log(data);
     } catch (err) {
@@ -47,28 +38,41 @@ export default function LoginPage() {
     setPassword('');
   }
 
-  // async function loadUser() {
-  //   const auth = localStorage.getItem('login');
-  //   const res = await fetch('http://localhost:7100/api/auth', {
-  //     method: 'GET',
-  //     headers: {
-  //       Accept: 'application/json',
-  //       'Content-Type': 'application/json',
-  //       Authorization: 'Bearer ' + auth
-  //     }
-  //   });
-  //   const user = await res.json();
-  //   setUser(state => ({
-  //     ...state,
-  //     login: true,
-  //     currentUser: user
-  //   }));
-  //   console.log(user);
-  // }
-
-  if (login) {
-    return <Redirect to="/profile" />;
+  async function loadUser() {
+    const auth = localStorage.getItem('token');
+    try {
+      const res = await fetch('http://localhost:7100/api/auth', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Auth-Token': auth
+        }
+      });
+      const me = await res.json();
+      setLogin(true);
+      setUser(() => [
+        {
+          name: me.name
+        }
+      ]);
+      console.log(me.name);
+      console.log(user);
+    } catch (err) {
+      console.log(err);
+    }
   }
+
+  React.useEffect(() => {
+    if (localStorage.token) {
+      loadUser();
+    }
+  }, []);
+
+  // if (login) {
+  //   return <Redirect to="/profile" />;
+  // } else {
+  //   return <Redirect to="/login" />
+  // }
 
   return (
     <LoginPageContainer>

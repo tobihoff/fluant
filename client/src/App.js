@@ -8,7 +8,7 @@ import SignInPage from '../src/pages/SignInPage';
 import ProfilePage from '../src/pages/ProfilePage';
 import { UserProvider } from '../src/context/user';
 
-function App() {
+const App = () => {
   return (
     <>
       <UserProvider>
@@ -31,6 +31,6 @@ function App() {
       </UserProvider>
     </>
   );
-}
+};
 
 export default App;

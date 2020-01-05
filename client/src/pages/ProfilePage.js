@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 import { Container, Header, Logo, Bookmark } from '../components/Header/Header';
 import BookmarkIcon from '../icons/BookmarkIcon';
@@ -22,6 +22,7 @@ import {
 import { Route, Switch, Link, BrowserRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from 'emotion-theming';
 import theme from '../components/themes/theme';
+import { UserContext } from '../context/user';
 
 const LogoImage = styled.img`
   height: 200px;
@@ -30,6 +31,7 @@ const LogoImage = styled.img`
 
 export default function ProfilePage() {
   const [themeColor, setThemeColor] = React.useState(theme.light);
+  const [user, setUser] = useContext(UserContext);
 
   function handleThemeClick() {
     if (themeColor === theme.light) {
@@ -55,10 +57,12 @@ export default function ProfilePage() {
       </Container>
       <ProfileContainer>
         <Profile
-          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+          src={
+            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+          }
           alt="Leonie"
         />
-        <ProfileInfo>Julia Goldfinger</ProfileInfo>
+        <ProfileInfo>{JSON.stringify(user)}</ProfileInfo>
       </ProfileContainer>
       <Router>
         <Navigation>
