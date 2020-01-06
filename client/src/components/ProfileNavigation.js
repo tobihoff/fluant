@@ -15,6 +15,7 @@ export const UnorderedList = styled.ul`
   list-style: none;
   font-size: 12px;
   width: 100%;
+  color: ${props => (props.isGreen ? props => props.theme.third : props => props.theme.secondary)};
 `;
 
 export const ListElements = styled.li`
@@ -22,7 +23,6 @@ export const ListElements = styled.li`
   border: 2px solid ${props => props.theme.border};
   cursor: pointer;
   min-width: 78px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 `;
 
 export const ListElementFriends = styled(ListElements)`

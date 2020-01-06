@@ -8,10 +8,10 @@ export const CardContainer = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   height: 100%;
-  padding: 5px;
   text-align: center;
   margin-top: 30px;
-  border: 2px dashed red;
+  max-height: 250px;
+  overflow: auto;
 `;
 
 export const Card = styled.div`
