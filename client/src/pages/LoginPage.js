@@ -50,7 +50,7 @@ export default function LoginPage() {
       });
       const me = await res.json();
       setLogin(true);
-      setUser(() => [
+      setUser([
         {
           name: me.name
         }
