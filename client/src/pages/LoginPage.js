@@ -1,15 +1,19 @@
 import React from 'react';
 import { LoginPageContainer } from '../components/Container/Container';
+import { Redirect } from 'react-router-dom';
 import LoginInput, { Label } from '../components/Inputs/Login';
 import Hello, { Text } from '../components/Text/Text';
 import Form from '../components/Container/Form';
 import { SignInContainer } from '../components/Container/Container';
 import { ToSignInButton } from '../components/Buttons/Buttons';
 import LoginButton from '../components/Buttons/LogInButton';
+import { UserContext } from '../context/user';
 
 export default function LoginPage() {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [login, setLogin] = React.useState(false);
+  const [user, setUser] = React.useContext(UserContext);
 
   async function handelSubmit(event) {
     event.preventDefault();
@@ -23,12 +27,46 @@ export default function LoginPage() {
       });
 
       const data = await response.json();
+      if (data.token) {
+        localStorage.setItem('token', data.token);
+      }
       console.log(data);
     } catch (err) {
       console.log(err);
     }
     setEmail('');
     setPassword('');
+  }
+
+  async function loadUser() {
+    const auth = localStorage.getItem('token');
+    try {
+      const res = await fetch('http://localhost:7100/api/auth', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Auth-Token': auth
+        }
+      });
+      const me = await res.json();
+      setLogin(true);
+      setUser({
+        name: me.name
+      });
+      console.log(me.name);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  React.useEffect(() => {
+    if (localStorage.token) {
+      loadUser();
+    }
+  }, []);
+
+  if (login) {
+    return <Redirect to="/profile" />;
   }
 
   return (
@@ -48,7 +86,6 @@ export default function LoginPage() {
         />
         <Label htmlFor="password">Your Password?</Label>
         <LoginInput
-          oginInput
           placeholder="Password"
           type="password"
           name="password"
@@ -60,7 +97,7 @@ export default function LoginPage() {
         <LoginButton type="submit" value="Login"></LoginButton>
       </Form>
       <SignInContainer>
-        <ToSignInButton>Don't you have an account yet?</ToSignInButton>
+        <ToSignInButton to="/register">Don't you have an account yet?</ToSignInButton>
       </SignInContainer>
     </LoginPageContainer>
   );

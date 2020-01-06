@@ -16,15 +16,14 @@ export default function LoginPage() {
     event.preventDefault();
     console.log(name, email, password);
     try {
-      const response = await fetch('http://localhost:7100/api/users', {
+      const response = fetch('http://localhost:7100/api/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({ name, email, password })
       });
-
-      const data = await response.json();
+      const data = response.json();
       console.log(data);
     } catch (err) {
       console.log(err);
@@ -37,7 +36,7 @@ export default function LoginPage() {
   return (
     <LoginPageContainer>
       <Hello>Hi!</Hello>
-      <Text>Sign in to your account</Text>
+      <Text>Sign up to your account</Text>
       <Form onSubmit={handelSubmit}>
         <Label htmlFor="name">Your Name?</Label>
         <LoginInput
@@ -70,10 +69,10 @@ export default function LoginPage() {
           onChange={e => setPassword(e.target.value)}
           required
         />
-        <LoginButton type="submit" value="Sign in"></LoginButton>
+        <LoginButton type="submit" value="Sign up"></LoginButton>
       </Form>
       <SignInContainer>
-        <ToSignInButton>Back to the Login!</ToSignInButton>
+        <ToSignInButton to="/login">Back to the Login!</ToSignInButton>
       </SignInContainer>
     </LoginPageContainer>
   );
