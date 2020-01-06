@@ -50,13 +50,10 @@ export default function LoginPage() {
       });
       const me = await res.json();
       setLogin(true);
-      setUser([
-        {
-          name: me.name
-        }
-      ]);
+      setUser({
+        name: me.name
+      });
       console.log(me.name);
-      console.log(user);
     } catch (err) {
       console.log(err);
     }
@@ -68,11 +65,9 @@ export default function LoginPage() {
     }
   }, []);
 
-  // if (login) {
-  //   return <Redirect to="/profile" />;
-  // } else {
-  //   return <Redirect to="/login" />
-  // }
+  if (login) {
+    return <Redirect to="/profile" />;
+  }
 
   return (
     <LoginPageContainer>
