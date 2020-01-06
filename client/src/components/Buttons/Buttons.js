@@ -13,6 +13,18 @@ const Button = styled.button`
   outline: none;
 `;
 
+export const AddButton = styled(Button)`
+  background-color: ${({ theme }) => theme.light.primary};
+  border: 2px solid ${({ theme }) => theme.third};
+  color: ${({ theme }) => theme.light.secondary};
+  min-width: 120px;
+  font-weight: bold;
+  &:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    transform: scale(1.1);
+  }
+`;
+
 export const ProfileButton = styled.button`
   width: 70px;
   height: 70px;

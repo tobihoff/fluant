@@ -1,18 +1,39 @@
 import styled from '@emotion/styled';
 
-const ProfileList = styled.article`
+const ProfileList = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  grid-gap: 5px;
-  width: 100%;
-  height: 40px;
-  background: white;
-  max-width: 240px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
-  margin: 3px;
-  padding: 3px;
-  font-size: 15px;
+  padding: 25px 10px;
+  border-radius: 10px;
+  text-align: center;
+  transition: 0.15s transform ease;
+  cursor: pointer;
+  width: 140px;
+  position: relative;
+  background-color: ${props => props.theme.secondary};
+  height: 65px;
+  width: 65px;
+  margin-bottom: 10px;
+  &:hover {
+    transform: scale(1.1);
+  }
+`;
+
+export const ProfileImageContainer = styled.div`
+  width: auto;
+  height: auto;
+  position: absolute;
+`;
+
+export const UserProfileStatus = styled(ProfileImageContainer)`
+  width: 6px;
+  height: 6px;
+  background-color: green;
+  border-radius: 10px;
+  left: 6px;
+  top: 6px;
 `;
 
 export default ProfileList;

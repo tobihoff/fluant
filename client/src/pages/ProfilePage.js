@@ -4,7 +4,7 @@ import { Container, Header, Logo, Bookmark } from '../components/Header/Header';
 import BookmarkIcon from '../icons/BookmarkIcon';
 import fluant from '../resources/fluant.png';
 import { BookmarkButton } from '../components/Buttons/Buttons';
-import { Profile, ProfileContainer, ProfileInfo } from '../components/Profile';
+import { Profile, ProfileContainer, UserName } from '../components/Profile';
 import ProfileCards from '../components/Profile/ProfileCards';
 import ProfileFriends from '../components/Profile/ProfileFriends';
 import ProfileScores from '../components/Profile/ProfileScores';
@@ -19,10 +19,11 @@ import {
   ListElements,
   ListElementFriends
 } from '../components/ProfileNavigation';
-import { Route, Switch, Link, BrowserRouter as Router } from 'react-router-dom';
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from 'emotion-theming';
 import theme from '../components/themes/theme';
 import { UserContext } from '../context/user';
+import NavLink from '../components/Links/Links';
 
 const LogoImage = styled.img`
   height: 200px;
@@ -56,20 +57,23 @@ export default function ProfilePage() {
         </Header>
       </Container>
       <ProfileContainer>
-        <Profile src={user.img} alt={user.name} />
-        <ProfileInfo>{user.name}</ProfileInfo>
+        <Profile
+          src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+          alt={user.name}
+        />
       </ProfileContainer>
+      <UserName>Nathan Hoffmann</UserName>
       <Router>
         <Navigation>
           <UnorderedList>
             <ListElements>
-              <Link to="/learn">Learn</Link>
+              <NavLink to="/learn">Learn</NavLink>
             </ListElements>
             <ListElementFriends>
-              <Link to="/friends">Friends</Link>
+              <NavLink to="/friends">Friends</NavLink>
             </ListElementFriends>
             <ListElements>
-              <Link to="/scores">Scores</Link>
+              <NavLink to="/scores">Scores</NavLink>
             </ListElements>
           </UnorderedList>
         </Navigation>
