@@ -5,13 +5,11 @@ import Badge from '../Badges/Badge';
 
 const ModalContainer = styled.div`
   display: flex;
-  flex-direction: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   position: absolute;
-  min-width: 175px;
-  min-height: 450px;
-  max-width: 175px;
-  max-height: 450px;
+  width: 175px;
+  height: 450px;
   right: 38px;
   top: 10px;
   background-color: ${props => props.theme.primary};
