@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import RemoveIcon from '../../icons/RemoveIcon';
 import Badge from '../Badges/Badge';
+import useFetch from '../../hooks/useFetch';
 
 const ModalContainer = styled.div`
   display: flex;
@@ -31,6 +32,9 @@ const BadgeContainer = styled(RemoveContainer)`
 `;
 
 export default function DictonaryList({ onClick }) {
+  let words = [];
+  words = useFetch('http://localhost:7100/api/auth');
+
   return (
     <>
       <ModalContainer>
@@ -40,7 +44,10 @@ export default function DictonaryList({ onClick }) {
           </button>
         </RemoveContainer>
         <BadgeContainer>
-          <Badge>Hallo</Badge>
+          {console.log(words.vocabulary)}
+          {words.vocabulary.map(word => (
+            <Badge key={word.index}>{word}</Badge>
+          ))}
         </BadgeContainer>
       </ModalContainer>
     </>

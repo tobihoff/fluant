@@ -1,19 +1,25 @@
 import React from 'react';
 
 function useFetch(url) {
-  const [user, setUser] = React.useState(null);
+  const [data, setData] = React.useState([]);
+  const auth = localStorage.getItem('token');
 
   React.useEffect(() => {
-    async function fetchUser() {
-      const response = await fetch(url);
-      const newData = await response.json();
-      setUser(newData);
+    async function doFetch() {
+      const res = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Auth-Token': auth
+        }
+      });
+      const newData = await res.json();
+      setData(newData);
     }
-
     doFetch();
   }, []);
 
-  return user;
+  return data;
 }
 
 export default useFetch;
