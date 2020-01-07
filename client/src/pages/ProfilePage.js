@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useCallback } from 'react';
 import styled from '@emotion/styled';
 import { Container, Header, Logo, Bookmark } from '../components/Header/Header';
 import BookmarkIcon from '../icons/BookmarkIcon';
@@ -24,6 +24,7 @@ import { ThemeProvider } from 'emotion-theming';
 import theme from '../components/themes/theme';
 import { UserContext } from '../context/user';
 import NavLink from '../components/Links/Links';
+import DictonaryList from '../components/Modals/Modal';
 
 const LogoImage = styled.img`
   height: 200px;
@@ -33,6 +34,11 @@ const LogoImage = styled.img`
 export default function ProfilePage() {
   const [themeColor, setThemeColor] = React.useState(theme.light);
   const [user, setUser] = useContext(UserContext);
+  const [modal, setModal] = React.useState(false);
+
+  const toggle = () => {
+    setModal(!modal);
+  };
 
   function handleThemeClick() {
     if (themeColor === theme.light) {
@@ -50,7 +56,8 @@ export default function ProfilePage() {
             <LogoImage src={fluant} alt="Logo" />
           </Logo>
           <Bookmark>
-            <BookmarkButton>
+            {modal ? <DictonaryList onClick={toggle} /> : <></>}
+            <BookmarkButton onClick={toggle}>
               <BookmarkIcon />
             </BookmarkButton>
           </Bookmark>
