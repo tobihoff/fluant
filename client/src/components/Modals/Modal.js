@@ -35,21 +35,27 @@ export default function DictonaryList({ onClick }) {
   let words = [];
   words = useFetch('http://localhost:7100/api/auth');
 
-  return (
-    <>
-      <ModalContainer>
-        <RemoveContainer>
-          <button onClick={() => onClick()}>
-            <RemoveIcon />
-          </button>
-        </RemoveContainer>
-        <BadgeContainer>
-          {console.log(words.vocabulary)}
-          {words.vocabulary.map(word => (
-            <Badge key={word.index}>{word}</Badge>
-          ))}
-        </BadgeContainer>
-      </ModalContainer>
-    </>
-  );
+  console.log(words);
+  console.log(words.vocabulary);
+
+  if (!words.vocabulary) {
+    return <></>;
+  } else {
+    return (
+      <>
+        <ModalContainer>
+          <RemoveContainer>
+            <button onClick={() => onClick()}>
+              <RemoveIcon />
+            </button>
+          </RemoveContainer>
+          <BadgeContainer>
+            {words.vocabulary.map(word => (
+              <Badge key={word.index}>{word}</Badge>
+            ))}
+          </BadgeContainer>
+        </ModalContainer>
+      </>
+    );
+  }
 }
