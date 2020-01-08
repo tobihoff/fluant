@@ -5,7 +5,7 @@ import Hello, { Text } from '../components/Text/Text';
 import Form from '../components/Container/Form';
 import { ToSignInButton } from '../components/Buttons/Buttons';
 import { SignInContainer } from '../components/Container/Container';
-import LoginButton from '../components/Buttons/LogInButton';
+import { LoginButton } from '../components/Buttons/Buttons';
 
 export default function LoginPage() {
   const [name, setName] = React.useState('');

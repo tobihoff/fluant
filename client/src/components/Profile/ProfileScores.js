@@ -1,7 +1,7 @@
 import React from 'react';
 import { CardContainer } from '../Cards/Cards';
-import ProfileList from '../ProfileList';
-import { FriendsProfile, ProfileInfo, ProfileScore } from '../Profile';
+import ProfileList from '../Profile/ProfileList';
+import { FriendsProfile, ProfileInfo, ProfileScore } from '../Profile/Profile';
 
 export default function ProfileFriends() {
   return (

@@ -4,7 +4,7 @@ import { Container, Header, Logo, Bookmark } from '../components/Header/Header';
 import BookmarkIcon from '../icons/BookmarkIcon';
 import fluant from '../resources/fluant.png';
 import { BookmarkButton } from '../components/Buttons/Buttons';
-import { Profile, ProfileContainer, UserName } from '../components/Profile';
+import { Profile, ProfileContainer, UserName } from '../components/Profile/Profile';
 import ProfileCards from '../components/Profile/ProfileCards';
 import ProfileFriends from '../components/Profile/ProfileFriends';
 import ProfileScores from '../components/Profile/ProfileScores';
@@ -18,7 +18,7 @@ import {
   UnorderedList,
   ListElements,
   ListElementFriends
-} from '../components/ProfileNavigation';
+} from '../components/Profile/ProfileNavigation';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from 'emotion-theming';
 import theme from '../components/themes/theme';
