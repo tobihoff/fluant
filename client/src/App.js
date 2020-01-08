@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import LoginPage from '../src/pages/LoginPage';
 import SignInPage from '../src/pages/SignInPage';
 import ProfilePage from '../src/pages/ProfilePage';
+import LandingPage from '../src/pages/LandingPage';
 import { UserProvider } from '../src/context/user';
 
 const App = () => {
@@ -16,6 +17,9 @@ const App = () => {
           <GlobalStyles />
           <Router>
             <Switch>
+              <Route exact path="/">
+                <LandingPage />
+              </Route>
               <Route exact path="/login">
                 <LoginPage />
               </Route>
