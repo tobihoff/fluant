@@ -27,35 +27,30 @@ const RemoveContainer = styled.div`
 `;
 
 const BadgeContainer = styled(RemoveContainer)`
-  flex-wrap: wrap;
+  flex-direction: column;
   min-height: 90vh;
+  align-items: center;
 `;
 
 export default function DictonaryList({ onClick }) {
-  let words = [];
-  words = useFetch('http://localhost:7100/api/auth');
+  const user = useFetch('http://localhost:7100/api/auth');
 
-  console.log(words);
-  console.log(words.vocabulary);
-
-  if (!words.vocabulary) {
-    return <></>;
-  } else {
-    return (
-      <>
+  return (
+    <>
+      {user.vocabulary && (
         <ModalContainer>
           <RemoveContainer>
-            <button onClick={() => onClick()}>
+            <button onClick={onClick}>
               <RemoveIcon />
             </button>
           </RemoveContainer>
           <BadgeContainer>
-            {words.vocabulary.map(word => (
+            {user.vocabulary.map(word => (
               <Badge key={word.index}>{word}</Badge>
             ))}
           </BadgeContainer>
         </ModalContainer>
-      </>
-    );
-  }
+      )}
+    </>
+  );
 }

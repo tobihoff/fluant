@@ -2,9 +2,9 @@ import React from 'react';
 
 function useFetch(url) {
   const [data, setData] = React.useState([]);
-  const auth = localStorage.getItem('token');
 
   React.useEffect(() => {
+    const auth = localStorage.getItem('token');
     async function doFetch() {
       const res = await fetch(url, {
         method: 'GET',
