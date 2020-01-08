@@ -12,7 +12,7 @@ import Footer, { ProfileButtonContainer } from '../components/Footer/Footer';
 import { ProfileButton, FooterButton } from '../components/Buttons/Buttons';
 import CircleIcon from '../icons/CircleIcon';
 import TranslateIcon from '../icons/TranslateIcon';
-import StudentIcon from '../icons/StudentIcon';
+import LogoutIcon from '../icons/LogoutIcon';
 import {
   Navigation,
   UnorderedList,
@@ -25,6 +25,7 @@ import theme from '../components/themes/theme';
 import { UserContext } from '../context/user';
 import NavLink from '../components/Links/Links';
 import DictonaryList from '../components/Modals/Modal';
+import { useHistory } from 'react-router-dom';
 
 const LogoImage = styled.img`
   height: 200px;
@@ -35,7 +36,9 @@ export default function ProfilePage() {
   const [themeColor, setThemeColor] = React.useState(theme.light);
   const [user, setUser] = useContext(UserContext);
   const [modal, setModal] = React.useState(false);
+  const history = useHistory();
 
+  console.log(history);
   const toggle = () => {
     setModal(!modal);
   };
@@ -105,8 +108,14 @@ export default function ProfilePage() {
             <TranslateIcon />
           </ProfileButton>
         </ProfileButtonContainer>
-        <FooterButton>
-          <StudentIcon />
+        <FooterButton
+          onClick={() => {
+            localStorage.removeItem('token');
+            setUser(false);
+            history.push('/login');
+          }}
+        >
+          <LogoutIcon />
         </FooterButton>
       </Footer>
     </ThemeProvider>
