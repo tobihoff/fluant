@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfileList from '../components/ProfileList';
+import ProfileList from '../components/Profile/ProfileList';
 import FriendsProfile from '../components/Profile';
 import { withKnobs, text } from '@storybook/addon-knobs';
 

@@ -6,7 +6,6 @@ const LoginInput = styled.input`
   font-size: 8px;
   color: ${props => props.theme.light.secondary};
   border: 1px solid ${props => props.theme.light.third};
-  /* background-image: url('../icons/profile.svg') no-repeat; */
   outline: none;
   width: 200px;
   height: 30px;

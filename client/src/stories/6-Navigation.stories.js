@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigation, UnorderedList, ListElements } from '../components/ProfileNavigation';
+import { Navigation, UnorderedList, ListElements } from '../components/Profile/ProfileNavigation';
 
 export default {
   title: 'Navigation'

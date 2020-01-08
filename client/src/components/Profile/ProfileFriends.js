@@ -1,16 +1,16 @@
 import React from 'react';
 import { CardContainer } from '../Cards/Cards';
-import ProfileList, { ProfileImageContainer, UserProfileStatus } from '../ProfileList';
-import { FriendsProfile, ProfileInfo } from '../Profile';
+import ProfileList, { ProfileImageContainer, UserProfileStatus } from '../Profile/ProfileList';
+import { FriendsProfile, ProfileInfo } from '../Profile/Profile';
 import { AddButton } from '../Buttons/Buttons';
-import { ButtonContainer } from '../Buttons/ButtonContainer';
+import { AddButtonContainer } from '../Container/Container';
 
 export default function ProfileFriends() {
   return (
     <CardContainer>
-      <ButtonContainer>
+      <AddButtonContainer>
         <AddButton>Add Friends</AddButton>
-      </ButtonContainer>
+      </AddButtonContainer>
       <ProfileList>
         <UserProfileStatus />
         <ProfileImageContainer>

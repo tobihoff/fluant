@@ -22,4 +22,11 @@ export const SignInContainer = styled(LandingPageContainer)`
   margin-top: 20px;
 `;
 
+export const AddButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 240px;
+  margin-bottom: 10px;
+`;
+
 export default LandingPageContainer;

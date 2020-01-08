@@ -1,12 +1,12 @@
 import React from 'react';
 import { LoginPageContainer } from '../components/Container/Container';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import LoginInput, { Label } from '../components/Inputs/Login';
 import Hello, { Text } from '../components/Text/Text';
 import Form from '../components/Container/Form';
 import { SignInContainer } from '../components/Container/Container';
 import { ToSignInButton } from '../components/Buttons/Buttons';
-import LoginButton from '../components/Buttons/LogInButton';
+import { LoginButton } from '../components/Buttons/Buttons';
 import { UserContext } from '../context/user';
 
 export default function LoginPage() {
@@ -14,6 +14,7 @@ export default function LoginPage() {
   const [password, setPassword] = React.useState('');
   const [login, setLogin] = React.useState(false);
   const [user, setUser] = React.useContext(UserContext);
+  const history = useHistory();
 
   async function handelSubmit(event) {
     event.preventDefault();
@@ -61,13 +62,9 @@ export default function LoginPage() {
 
   React.useEffect(() => {
     if (localStorage.token) {
-      loadUser();
+      loadUser().then(history.push('/profile'));
     }
   }, []);
-
-  if (login) {
-    return <Redirect to="/profile" />;
-  }
 
   return (
     <LoginPageContainer>
