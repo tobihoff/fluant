@@ -1,6 +1,6 @@
 import React from 'react';
 import { LoginPageContainer } from '../components/Container/Container';
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import LoginInput, { Label } from '../components/Inputs/Login';
 import Hello, { Text } from '../components/Text/Text';
 import Form from '../components/Container/Form';
@@ -52,7 +52,9 @@ export default function LoginPage() {
       const me = await res.json();
       setLogin(true);
       setUser({
-        name: me.name
+        name: me.name,
+        email: me.email,
+        img: me.img
       });
       console.log(me.name);
     } catch (err) {
@@ -60,11 +62,9 @@ export default function LoginPage() {
     }
   }
 
-  React.useEffect(() => {
-    if (localStorage.token) {
-      loadUser().then(history.push('/profile'));
-    }
-  }, []);
+  if (localStorage.token) {
+    loadUser().then(history.push('/profile'));
+  }
 
   return (
     <LoginPageContainer>

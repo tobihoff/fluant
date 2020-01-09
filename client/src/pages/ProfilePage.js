@@ -39,6 +39,7 @@ export default function ProfilePage() {
   const history = useHistory();
 
   console.log(history);
+  console.log(user.name);
   const toggle = () => {
     setModal(!modal);
   };
@@ -51,6 +52,12 @@ export default function ProfilePage() {
     }
   }
 
+  function handleLogout() {
+    localStorage.removeItem('token');
+    setUser(false);
+    history.push('/login');
+  }
+
   return (
     <ThemeProvider theme={themeColor}>
       <Container>
@@ -59,7 +66,7 @@ export default function ProfilePage() {
             <LogoImage src={fluant} alt="Logo" />
           </Logo>
           <Bookmark>
-            {modal ? <DictonaryList onClick={toggle} /> : <></>}
+            {modal && <DictonaryList onClick={toggle} />}
             <BookmarkButton onClick={toggle}>
               <BookmarkIcon />
             </BookmarkButton>
@@ -67,12 +74,9 @@ export default function ProfilePage() {
         </Header>
       </Container>
       <ProfileContainer>
-        <Profile
-          src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-          alt={user.name}
-        />
+        <Profile src={user.img} alt={user.name} />
       </ProfileContainer>
-      <UserName>Nathan Hoffmann</UserName>
+      <UserName>{user.name}</UserName>
       <Router>
         <Navigation>
           <UnorderedList>
@@ -108,13 +112,7 @@ export default function ProfilePage() {
             <TranslateIcon />
           </ProfileButton>
         </ProfileButtonContainer>
-        <FooterButton
-          onClick={() => {
-            localStorage.removeItem('token');
-            setUser(false);
-            history.push('/login');
-          }}
-        >
+        <FooterButton onClick={handleLogout}>
           <LogoutIcon />
         </FooterButton>
       </Footer>

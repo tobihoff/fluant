@@ -5,12 +5,14 @@ import Badge from '../Badges/Badge';
 import useFetch from '../../hooks/useFetch';
 
 const ModalContainer = styled.div`
+  z-index: 8000;
+  position: absolute;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  position: absolute;
   width: 175px;
-  height: 450px;
+  height: fit-content;
+  max-height: 250px;
   right: 38px;
   top: 10px;
   background-color: ${props => props.theme.primary};

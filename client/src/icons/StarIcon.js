@@ -4,8 +4,8 @@ export default function StarIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="28pt"
-      height="28pt"
+      width="25pt"
+      height="25pt"
       viewBox="0 0 144 144"
       version="1.1"
     >
