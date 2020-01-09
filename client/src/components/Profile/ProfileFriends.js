@@ -21,7 +21,6 @@ export default function ProfileFriends() {
             <FriendsCard key={user.index} name={user.name} img={user.img} />
           ))}
         </CardContainer>
-        )
       </>
     );
   }

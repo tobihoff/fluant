@@ -44,8 +44,9 @@ export const UserName = styled(ProfileInfo)`
 `;
 
 export const ProfileScore = styled.p`
-  color: ${props => props.theme.light.third};
+  color: ${props => props.theme.third};
   font-size: 10px;
+  font-weight: bold;
 `;
 
 export default Profile;

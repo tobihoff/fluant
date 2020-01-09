@@ -12,9 +12,11 @@ export default function Score() {
     return (
       <>
         <ScoreContainer>
-          {users.friends.map(user => (
-            <ScoreCards key={user.index} name={user.name} img={user.img} xp={user.xp} />
-          ))}
+          {users.friends
+            .sort((a, b) => b.xp - a.xp)
+            .map(user => (
+              <ScoreCards key={user.index} name={user.name} img={user.img} xp={user.xp} />
+            ))}
         </ScoreContainer>
       </>
     );
