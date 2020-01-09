@@ -52,7 +52,9 @@ export default function LoginPage() {
       const me = await res.json();
       setLogin(true);
       setUser({
-        name: me.name
+        name: me.name,
+        email: me.email,
+        img: me.img
       });
       console.log(me.name);
     } catch (err) {

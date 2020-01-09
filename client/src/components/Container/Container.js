@@ -35,7 +35,7 @@ export const ScoreContainer = styled(AddButtonContainer)`
   max-height: 240px;
   overflow: auto;
   margin-bottom: none;
-  margin-top: 40px;
+  margin-top: 20px;
 `;
 
 export default LandingPageContainer;

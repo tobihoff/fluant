@@ -39,6 +39,7 @@ export default function ProfilePage() {
   const history = useHistory();
 
   console.log(history);
+  console.log(user.name);
   const toggle = () => {
     setModal(!modal);
   };
@@ -51,6 +52,12 @@ export default function ProfilePage() {
     }
   }
 
+  function handleLogout() {
+    localStorage.removeItem('token');
+    setUser(false);
+    history.push('/login');
+  }
+
   return (
     <ThemeProvider theme={themeColor}>
       <Container>
@@ -59,7 +66,7 @@ export default function ProfilePage() {
             <LogoImage src={fluant} alt="Logo" />
           </Logo>
           <Bookmark>
-            {modal ? <DictonaryList onClick={toggle} /> : <></>}
+            {modal && <DictonaryList onClick={toggle} />}
             <BookmarkButton onClick={toggle}>
               <BookmarkIcon />
             </BookmarkButton>
@@ -69,7 +76,7 @@ export default function ProfilePage() {
       <ProfileContainer>
         <Profile src={user.img} alt={user.name} />
       </ProfileContainer>
-      <UserName>Nathan Hoffmann</UserName>
+      <UserName>{user.name}</UserName>
       <Router>
         <Navigation>
           <UnorderedList>
@@ -105,13 +112,7 @@ export default function ProfilePage() {
             <TranslateIcon />
           </ProfileButton>
         </ProfileButtonContainer>
-        <FooterButton
-          onClick={() => {
-            localStorage.removeItem('token');
-            setUser(false);
-            history.push('/login');
-          }}
-        >
+        <FooterButton onClick={handleLogout}>
           <LogoutIcon />
         </FooterButton>
       </Footer>

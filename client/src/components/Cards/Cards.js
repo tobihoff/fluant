@@ -36,9 +36,12 @@ export const Card = styled.div`
 export const ScoreCards = styled.div`
   display: flex;
   flex-direction: row;
-  width: 100%;
+  max-width: 240px;
   height: 42px;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  border: 1px solid ${props => props.theme.secondary};
+  border: 0.5px solid ${props => props.theme.light.primary};
+  background-color: white;
+  margin: 10px;
+  padding-right: 20px;
 `;
