@@ -32,3 +32,13 @@ export const Card = styled.div`
     transform: scale(1.1);
   }
 `;
+
+export const ScoreCards = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 42px;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid ${props => props.theme.secondary};
+`;

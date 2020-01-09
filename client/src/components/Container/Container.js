@@ -29,4 +29,13 @@ export const AddButtonContainer = styled.div`
   margin-bottom: 10px;
 `;
 
+export const ScoreContainer = styled(AddButtonContainer)`
+  margin: 0 auto;
+  flex-direction: column;
+  max-height: 240px;
+  overflow: auto;
+  margin-bottom: none;
+  margin-top: 40px;
+`;
+
 export default LandingPageContainer;
