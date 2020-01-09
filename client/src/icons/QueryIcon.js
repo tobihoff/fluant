@@ -4,8 +4,8 @@ export default function QueryIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="28pt"
-      height="28pt"
+      width="24pt"
+      height="24pt"
       viewBox="0 0 208 208"
       version="1.1"
     >

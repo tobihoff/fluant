@@ -4,8 +4,8 @@ export default function HundredIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="30pt"
-      height="30pt"
+      width="25pt"
+      height="25pt"
       viewBox="0 0 192 192"
       version="1.1"
     >

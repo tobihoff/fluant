@@ -11,6 +11,11 @@ export const Text = styled.p`
   margin-bottom: 30px;
 `;
 
+export const Description = styled(Text)`
+  color: ${props => props.theme.light.secondary};
+  margin-bottom: none;
+`;
+
 export const Dictonary = styled.h3`
   margin: 0 auto;
   display: flex;
