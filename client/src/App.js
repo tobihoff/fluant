@@ -7,6 +7,7 @@ import LoginPage from '../src/pages/LoginPage';
 import SignInPage from '../src/pages/SignInPage';
 import ProfilePage from '../src/pages/ProfilePage';
 import LandingPage from '../src/pages/LandingPage';
+import TranslatorPage from '../src/pages/TranslatorPage';
 import { UserProvider } from '../src/context/user';
 
 const App = () => {
@@ -19,6 +20,9 @@ const App = () => {
             <Switch>
               <Route exact path="/">
                 <LandingPage />
+              </Route>
+              <Route exact path="/translator">
+                <TranslatorPage />
               </Route>
               <Route exact path="/login">
                 <LoginPage />

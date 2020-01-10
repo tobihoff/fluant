@@ -38,4 +38,12 @@ export const ScoreContainer = styled(AddButtonContainer)`
   margin-top: 20px;
 `;
 
+export const TextareaContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+`;
+
 export default LandingPageContainer;
