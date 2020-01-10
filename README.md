@@ -18,8 +18,16 @@ With fluant you can use a translator to store the vocabulary you have asked for 
 
 ## Usage
 
+Install client and server dependencies:
+
 ```
 npm install
 cd client
 npm install
+```
+
+To start the server and client at the same time:
+
+```
+npm run dev
 ```
