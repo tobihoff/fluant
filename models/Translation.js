@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const TranslationSchema = mongoose.Schema({
-  vocabulary: {
+  german: {
     type: String,
     required: true
   },
-  language: {
+  english: {
     type: String,
     required: true
   }

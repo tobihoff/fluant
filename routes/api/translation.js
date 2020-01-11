@@ -15,8 +15,8 @@ router.get('/', async (req, res) => {
 //Submit a post
 router.post('/', async (req, res) => {
   const translation = new Translation({
-    vocabulary: req.body.vocabulary,
-    language: req.body.language
+    german: req.body.german,
+    english: req.body.english
   });
   try {
     const savedTranslation = await translation.save();
