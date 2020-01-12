@@ -1,4 +1,4 @@
-import React, { useContext, useCallback } from 'react';
+import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 import { Container, Header, Logo, Bookmark } from '../components/Header/Header';
 import BookmarkIcon from '../icons/BookmarkIcon';
