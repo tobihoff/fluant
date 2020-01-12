@@ -25,6 +25,7 @@ app.use((req, res, next) => {
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/translation', require('./routes/api/translation'));
+app.use('/api/dictonary', require('./routes/api/dictonary'));
 
 const Port = 7100;
 

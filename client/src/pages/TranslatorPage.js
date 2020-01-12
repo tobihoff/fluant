@@ -34,12 +34,10 @@ export default function TranslatorPage() {
     await loadVocabulary();
   }, []);
 
-  console.log(translation);
-
   function handleTranslation() {
     let words = document.getElementById('translator').value;
     translation.find(item => {
-      if (words === item.english) {
+      if (words === item.german) {
         return getResult();
       }
     });
@@ -49,11 +47,22 @@ export default function TranslatorPage() {
     let voc = document.getElementById('translator');
     let word = document.getElementById('translator').value;
     let solution = [];
-    solution.push(translation.find(item => item.english === word));
+    solution.push(translation.find(item => item.german === word));
     voc.onchange = () => {
       let res = document.getElementById('result');
-      res.innerHTML = solution[0].german;
+      res.innerHTML = solution[0].english;
     };
+  }
+
+  // document.addEventListener('selectionchange', () => {
+  //   const selection = window.getSelection();
+  //   const clientRect = selection.getRangeAt(0).getBoundingClientRect();
+  //   console.log(selection.toString(), clientRect);
+  // });
+
+  function handleSelect(event) {
+    let location = event.target.value;
+    console.log(location);
   }
 
   return (
@@ -72,7 +81,7 @@ export default function TranslatorPage() {
       </Container>
       <TextareaContainer>
         <Textarea id="translator" onChange={handleTranslation} />
-        <TextareaDark id="result" />
+        <TextareaDark id="result" onMouseUp={handleSelect} />
       </TextareaContainer>
       <Footer>
         <FooterButton>
