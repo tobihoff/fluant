@@ -48,12 +48,11 @@ export default function TranslatorPage() {
   function getResult() {
     let voc = document.getElementById('translator');
     let word = document.getElementById('translator').value;
-    let abc = [];
-    abc.push(translation.find(item => item.english === word));
-    console.log(abc);
+    let solution = [];
+    solution.push(translation.find(item => item.english === word));
     voc.onchange = () => {
       let res = document.getElementById('result');
-      res.innerHTML = abc[0].german;
+      res.innerHTML = solution[0].german;
     };
   }
 
