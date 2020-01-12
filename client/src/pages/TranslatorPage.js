@@ -19,6 +19,7 @@ const LogoImage = styled.img`
 
 export default function TranslatorPage() {
   const [translation, setTranslation] = React.useState([]);
+  const [vocabualry, setVocabulary] = React.useState([]);
 
   async function loadVocabulary() {
     try {
@@ -54,15 +55,17 @@ export default function TranslatorPage() {
     };
   }
 
-  // document.addEventListener('selectionchange', () => {
-  //   const selection = window.getSelection();
-  //   const clientRect = selection.getRangeAt(0).getBoundingClientRect();
-  //   console.log(selection.toString(), clientRect);
-  // });
-
-  function handleSelect(event) {
+  async function handleVocabulary(event) {
     let location = event.target.value;
-    console.log(location);
+    const auth = localStorage.getItem('token');
+    await fetch('http://localhost:7100/api/dictonary', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Auth-Token': auth
+      },
+      body: JSON.stringify({ vocabulary: location })
+    });
   }
 
   return (
@@ -81,7 +84,7 @@ export default function TranslatorPage() {
       </Container>
       <TextareaContainer>
         <Textarea id="translator" onChange={handleTranslation} />
-        <TextareaDark id="result" onMouseUp={handleSelect} />
+        <TextareaDark id="result" onMouseUp={handleVocabulary} />
       </TextareaContainer>
       <Footer>
         <FooterButton>
