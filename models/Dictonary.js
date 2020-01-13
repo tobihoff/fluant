@@ -6,7 +6,9 @@ const DictonarySchema = mongoose.Schema({
     type: Schema.Types.ObjectId,
     ref: 'users'
   },
-  vocabulary: []
+  vocabulary: {
+    type: String
+  }
 });
 
 module.exports = mongoose.model('Dictonary', DictonarySchema);

@@ -54,7 +54,8 @@ export default function LoginPage() {
       setUser({
         name: me.name,
         email: me.email,
-        img: me.img
+        img: me.img,
+        id: me._id
       });
       console.log(me.name);
     } catch (err) {

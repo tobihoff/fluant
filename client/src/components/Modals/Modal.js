@@ -35,11 +35,12 @@ const BadgeContainer = styled(RemoveContainer)`
 `;
 
 export default function DictonaryList({ onClick }) {
-  const user = useFetch('http://localhost:7100/api/auth');
+  const user = useFetch('http://localhost:7100/api/dictonary/');
 
+  console.log(user);
   return (
     <>
-      {user.vocabulary && (
+      {user && (
         <ModalContainer>
           <RemoveContainer>
             <button onClick={onClick}>
@@ -47,8 +48,8 @@ export default function DictonaryList({ onClick }) {
             </button>
           </RemoveContainer>
           <BadgeContainer>
-            {user.vocabulary.map(word => (
-              <Badge key={word.index}>{word}</Badge>
+            {user.map(word => (
+              <Badge key={word.index}>{word.vocabulary}</Badge>
             ))}
           </BadgeContainer>
         </ModalContainer>

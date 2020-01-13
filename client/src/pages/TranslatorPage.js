@@ -19,7 +19,7 @@ const LogoImage = styled.img`
 
 export default function TranslatorPage() {
   const [translation, setTranslation] = React.useState([]);
-  const [vocabualry, setVocabulary] = React.useState([]);
+  const [teleport, setTeleport] = React.useState(false);
 
   async function loadVocabulary() {
     try {
@@ -53,19 +53,25 @@ export default function TranslatorPage() {
       let res = document.getElementById('result');
       res.innerHTML = solution[0].english;
     };
+    setTeleport(true);
   }
 
   async function handleVocabulary(event) {
-    let location = event.target.value;
-    const auth = localStorage.getItem('token');
-    await fetch('http://localhost:7100/api/dictonary', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Auth-Token': auth
-      },
-      body: JSON.stringify({ vocabulary: location })
-    });
+    setTeleport(true);
+    if (teleport) {
+      let location = event.target.value;
+      const auth = localStorage.getItem('token');
+      await fetch('http://localhost:7100/api/dictonary', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Auth-Token': auth
+        },
+        body: JSON.stringify({ vocabulary: location })
+      });
+    } else {
+      return null;
+    }
   }
 
   return (
