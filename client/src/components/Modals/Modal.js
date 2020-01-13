@@ -43,11 +43,12 @@ export default function DictonaryList({ onClick }) {
   let id = getUser.id;
   console.log(id);
 
-  const user = useFetch(`http://localhost:7100/api/dictonary`);
+  const user = useFetch(`http://localhost:7100/api/dictonary/${id}`);
 
-  async function handleDelete() {
-    const auth = localStorage.getItem('token');
-    return await fetch(`http://localhost:7100/api/dictonary/:${id}`, {
+  const auth = localStorage.getItem('token');
+
+  async function handleDelete(vocabularyId) {
+    return fetch(`http://localhost:7100/api/dictonary/${vocabularyId}`, {
       method: 'DELETE',
       headers: {
         'X-Auth-Token': auth
@@ -68,7 +69,7 @@ export default function DictonaryList({ onClick }) {
             {user.map(word => (
               <Badge key={word.index}>
                 {word.vocabulary}
-                <DeleteButton onClick={handleDelete}>
+                <DeleteButton id={word._id} onClick={() => handleDelete(word._id)}>
                   <DeleteIcon />
                 </DeleteButton>
               </Badge>
