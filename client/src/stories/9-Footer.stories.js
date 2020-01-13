@@ -2,7 +2,7 @@ import React from 'react';
 import { ProfileButton, FooterButton } from '../components/Buttons/Buttons';
 import Footer from '../components/Footer/Footer';
 import StudentIcon from '../icons/StudentIcon';
-import SunIcon from '../icons/SunIcon';
+import SunIcon from '../icons/MoonIcon';
 import ProfileIcon from '../icons/ProfileIcon';
 
 export default {
