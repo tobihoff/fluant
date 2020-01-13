@@ -19,6 +19,7 @@ const LogoImage = styled.img`
 
 export default function TranslatorPage() {
   const [translation, setTranslation] = React.useState([]);
+  const [teleport, setTeleport] = React.useState(false);
 
   async function loadVocabulary() {
     try {
@@ -34,12 +35,10 @@ export default function TranslatorPage() {
     await loadVocabulary();
   }, []);
 
-  console.log(translation);
-
   function handleTranslation() {
     let words = document.getElementById('translator').value;
     translation.find(item => {
-      if (words === item.english) {
+      if (words === item.german) {
         return getResult();
       }
     });
@@ -49,11 +48,30 @@ export default function TranslatorPage() {
     let voc = document.getElementById('translator');
     let word = document.getElementById('translator').value;
     let solution = [];
-    solution.push(translation.find(item => item.english === word));
+    solution.push(translation.find(item => item.german === word));
     voc.onchange = () => {
       let res = document.getElementById('result');
-      res.innerHTML = solution[0].german;
+      res.innerHTML = solution[0].english;
     };
+    setTeleport(true);
+  }
+
+  async function handleVocabulary(event) {
+    setTeleport(true);
+    if (teleport) {
+      let location = event.target.value;
+      const auth = localStorage.getItem('token');
+      await fetch('http://localhost:7100/api/dictonary', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Auth-Token': auth
+        },
+        body: JSON.stringify({ vocabulary: location })
+      });
+    } else {
+      return null;
+    }
   }
 
   return (
@@ -72,7 +90,7 @@ export default function TranslatorPage() {
       </Container>
       <TextareaContainer>
         <Textarea id="translator" onChange={handleTranslation} />
-        <TextareaDark id="result" />
+        <TextareaDark id="result" onMouseUp={handleVocabulary} />
       </TextareaContainer>
       <Footer>
         <FooterButton>
