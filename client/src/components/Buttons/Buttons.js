@@ -13,6 +13,14 @@ const Button = styled.button`
   outline: none;
 `;
 
+export const DeleteButton = styled.button`
+  width: 20px;
+  height: auto;
+  border: none;
+  text-align: none;
+  background-color: ${({ theme }) => theme.light.secondary};
+`;
+
 export const AddButton = styled(Button)`
   background-color: ${({ theme }) => theme.light.primary};
   border: 2px solid ${({ theme }) => theme.third};

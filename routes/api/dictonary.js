@@ -3,6 +3,7 @@ const router = express.Router();
 const auth = require('../../middleware/auth');
 const User = require('../../models/User');
 const Dictonary = require('../../models/Dictonary');
+const { ObjectID } = require('mongodb');
 
 router.post('/', auth, async (req, res) => {
   try {
@@ -21,26 +22,13 @@ router.post('/', auth, async (req, res) => {
 });
 
 //Get all dictonary posts
-router.get('/', auth, async (req, res) => {
-  try {
-    const posts = await Dictonary.find();
-    res.json(posts);
-  } catch (err) {
-    console.log(err.message);
-    res.status(500).send('Server mistake');
-  }
-});
-
-//Get users(id) posts
 router.get('/:id', auth, async (req, res) => {
   try {
-    const post = await Dictonary.findById(req.params.id);
-
-    if (!post) {
-      return res.status(404).json({ msg: 'Can not find vocabulars' });
-    }
-
-    res.json(post);
+    const userId = new ObjectID(req.params.id);
+    const query = userId ? { user: userId } : {};
+    const posts = await Dictonary.find(query);
+    console.log(posts);
+    res.json(posts);
   } catch (err) {
     console.log(err.message);
     res.status(500).send('Server mistake');
@@ -50,11 +38,10 @@ router.get('/:id', auth, async (req, res) => {
 //Delete
 router.delete('/:id', auth, async (req, res) => {
   try {
-    const post = await Dictonary.findById(req.params.id);
-    if (post.user.toString() !== req.user.id) {
-      return res.json({ msg: 'User dont match' });
-    }
-    await post.remove();
+    const userId = new ObjectID(req.params.id);
+    const query = userId ? { _id: userId } : {};
+    await Dictonary.findOneAndRemove(query);
+    console.log(query);
     res.json({ msg: 'Vocabulary removed' });
   } catch (err) {
     console.log(err.message);
