@@ -8,19 +8,16 @@ router.get('/', async (req, res) => {
     const translation = await Translation.find();
     res.json(translation);
   } catch (err) {
+    console.error(err);
     res.json({ message: err });
   }
 });
 
-//Submit a post
+//Submit a translation
 router.post('/', async (req, res) => {
   const translation = new Translation({
-    voca: [
-      {
-        english: req.body.english,
-        german: req.body.german
-      }
-    ]
+    english: req.body.english,
+    german: req.body.german
   });
   try {
     const savedTranslation = await translation.save();
@@ -30,10 +27,10 @@ router.post('/', async (req, res) => {
   }
 });
 
-//Get specific Post
-router.get('/:postId', async (req, res) => {
+//Get specific translation
+router.get('/:translationId', async (req, res) => {
   try {
-    const translation = await Translation.findById(req.params.postId);
+    const translation = await Translation.findById(req.params.translationId);
     res.json(translation);
   } catch (err) {
     res.json({ message: err });
