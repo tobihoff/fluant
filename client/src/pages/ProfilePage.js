@@ -1,9 +1,5 @@
-import React, { useContext } from 'react';
-import styled from '@emotion/styled';
-import { Container, Header, Logo, Bookmark } from '../components/Header/Header';
-import BookmarkIcon from '../icons/BookmarkIcon';
-import fluant from '../resources/fluant.png';
-import { BookmarkButton } from '../components/Buttons/Buttons';
+import React from 'react';
+import Header from '../components/Header/Header';
 import { Profile, ProfileContainer, UserName } from '../components/Profile/Profile';
 import ProfileCards from '../components/Profile/ProfileCards';
 import ProfileFriends from '../components/Profile/ProfileFriends';
@@ -22,27 +18,14 @@ import {
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from 'emotion-theming';
 import theme from '../components/themes/theme';
-import { UserContext } from '../context/user';
+import { useLogout, useUser } from '../context/user';
 import NavLink from '../components/Links/Links';
-import DictonaryList from '../components/Modals/Modal';
-import { useHistory } from 'react-router-dom';
-
-const LogoImage = styled.img`
-  height: 200px;
-  width: auto;
-`;
+import { Link } from 'react-router-dom';
 
 export default function ProfilePage() {
   const [themeColor, setThemeColor] = React.useState(theme.light);
-  const [user, setUser] = useContext(UserContext);
-  const [modal, setModal] = React.useState(false);
-  const history = useHistory();
-
-  console.log(history);
-  console.log(user.name);
-  const toggle = () => {
-    setModal(!modal);
-  };
+  const user = useUser();
+  const logout = useLogout();
 
   function handleThemeClick() {
     if (themeColor === theme.light) {
@@ -52,27 +35,9 @@ export default function ProfilePage() {
     }
   }
 
-  function handleLogout() {
-    localStorage.removeItem('token');
-    setUser(false);
-    history.push('/login');
-  }
-
   return (
     <ThemeProvider theme={themeColor}>
-      <Container>
-        <Header>
-          <Logo>
-            <LogoImage src={fluant} alt="Logo" />
-          </Logo>
-          <Bookmark>
-            {modal && <DictonaryList onClick={toggle} />}
-            <BookmarkButton onClick={toggle}>
-              <BookmarkIcon />
-            </BookmarkButton>
-          </Bookmark>
-        </Header>
-      </Container>
+      <Header />
       <ProfileContainer>
         <Profile src={user.img} alt={user.name} />
       </ProfileContainer>
@@ -108,11 +73,11 @@ export default function ProfilePage() {
           <CircleIcon />
         </FooterButton>
         <ProfileButtonContainer>
-          <ProfileButton>
+          <ProfileButton as={Link} to="/translator">
             <TranslateIcon />
           </ProfileButton>
         </ProfileButtonContainer>
-        <FooterButton onClick={handleLogout}>
+        <FooterButton onClick={logout}>
           <LogoutIcon />
         </FooterButton>
       </Footer>

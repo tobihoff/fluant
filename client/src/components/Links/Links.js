@@ -6,4 +6,8 @@ const NavLink = styled(Link)`
   color: ${props => props.theme.light.border};
 `;
 
+export const FooterLink = styled(Link)`
+  all: unset;
+`;
+
 export default NavLink;

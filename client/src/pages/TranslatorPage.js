@@ -1,110 +1,88 @@
 import React from 'react';
-import styled from '@emotion/styled';
-import { Container, Header, Logo, Bookmark } from '../components/Header/Header';
-import BookmarkIcon from '../icons/BookmarkIcon';
-import fluant from '../resources/fluant.png';
-import { BookmarkButton } from '../components/Buttons/Buttons';
+import Header from '../components/Header/Header';
 import Footer, { ProfileButtonContainer } from '../components/Footer/Footer';
 import { ProfileButton, FooterButton } from '../components/Buttons/Buttons';
 import CircleIcon from '../icons/CircleIcon';
-import TranslateIcon from '../icons/TranslateIcon';
+import ProfileIcon from '../icons/ProfileIcon';
 import LogoutIcon from '../icons/LogoutIcon';
 import Textarea, { TextareaDark } from '../components/Textarea/Textarea';
+import { ThemeProvider } from 'emotion-theming';
+import theme from '../components/themes/theme';
+import { useLogout } from '../context/user';
 import { TextareaContainer } from '../components/Container/Container';
-
-const LogoImage = styled.img`
-  height: 200px;
-  width: auto;
-`;
+import { Link } from 'react-router-dom';
 
 export default function TranslatorPage() {
   const [translation, setTranslation] = React.useState([]);
-  const [teleport, setTeleport] = React.useState(false);
+  const [themeColor, setThemeColor] = React.useState(theme.light);
+  const logout = useLogout();
+  const [words, setWords] = React.useState('');
+  const [result, setResult] = React.useState('');
 
   async function loadVocabulary() {
     try {
-      const res = await fetch('http://localhost:7100/api/translation');
-      const data = await res.json();
-      setTranslation(data[0].voca);
+      const response = await fetch('/api/translation');
+      const translations = await response.json();
+      setTranslation(translations);
     } catch (err) {
       console.log(err);
     }
   }
 
-  React.useEffect(async () => {
-    await loadVocabulary();
+  React.useEffect(() => {
+    loadVocabulary();
   }, []);
 
-  function handleTranslation() {
-    let words = document.getElementById('translator').value;
-    translation.find(item => {
-      if (words === item.german) {
-        return getResult();
-      }
+  function handleWordsChange(event) {
+    const words = event.target.value;
+    setWords(words);
+  }
+
+  React.useEffect(() => {
+    const solution = translation.find(item => item.german === words);
+    setResult(solution ? solution.english : '');
+  }, [words]);
+
+  async function handleVocabulary() {
+    const auth = localStorage.getItem('token');
+    await fetch('/api/dictonary', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Auth-Token': auth
+      },
+      body: JSON.stringify({ vocabulary: result })
     });
   }
 
-  function getResult() {
-    let voc = document.getElementById('translator');
-    let word = document.getElementById('translator').value;
-    let solution = [];
-    solution.push(translation.find(item => item.german === word));
-    voc.onchange = () => {
-      let res = document.getElementById('result');
-      res.innerHTML = solution[0].english;
-    };
-    setTeleport(true);
-  }
-
-  async function handleVocabulary(event) {
-    setTeleport(true);
-    if (teleport) {
-      let location = event.target.value;
-      const auth = localStorage.getItem('token');
-      await fetch('http://localhost:7100/api/dictonary', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Auth-Token': auth
-        },
-        body: JSON.stringify({ vocabulary: location })
-      });
+  function handleThemeClick() {
+    if (themeColor === theme.light) {
+      setThemeColor(theme.dark);
     } else {
-      return null;
+      setThemeColor(theme.light);
     }
   }
 
   return (
-    <>
-      <Container>
-        <Header>
-          <Logo>
-            <LogoImage src={fluant} alt="Logo" />
-          </Logo>
-          <Bookmark>
-            <BookmarkButton>
-              <BookmarkIcon />
-            </BookmarkButton>
-          </Bookmark>
-        </Header>
-      </Container>
+    <ThemeProvider theme={themeColor}>
+      <Header />
       <TextareaContainer>
-        <Textarea id="translator" onChange={handleTranslation} />
-        <TextareaDark id="result" onMouseUp={handleVocabulary} />
+        <Textarea value={words} onChange={handleWordsChange} />
+        <TextareaDark value={result} onMouseUp={handleVocabulary} />
       </TextareaContainer>
       <Footer>
-        <FooterButton>
+        <FooterButton onClick={handleThemeClick}>
           <CircleIcon />
         </FooterButton>
         <ProfileButtonContainer>
-          <ProfileButton>
-            <TranslateIcon />
+          <ProfileButton as={Link} to="/profile">
+            <ProfileIcon />
           </ProfileButton>
         </ProfileButtonContainer>
-        <FooterButton>
+        <FooterButton onClick={logout}>
           <LogoutIcon />
         </FooterButton>
       </Footer>
-    </>
+    </ThemeProvider>
   );
 }

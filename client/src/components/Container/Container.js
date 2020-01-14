@@ -46,4 +46,10 @@ export const TextareaContainer = styled.div`
   height: 80vh;
 `;
 
+export const ProfileButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export default LandingPageContainer;

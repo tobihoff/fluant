@@ -1,17 +1,15 @@
 const express = require('express');
 const connectDB = require('./config/db');
-const app = express();
 const path = require('path');
 
-//Connect Database
-connectDB();
+const app = express();
 
 // Init Middleware
 app.use(express.json({ extended: false }));
 
 //Cors issue
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*'); 
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader(
     'Access-Control-Allow-Headers',
     'Origin, X-Requested-Width, Content-Type, Accept, Authorization, X-Auth-Token'
@@ -36,4 +34,9 @@ app.get('*', function(req, res) {
 
 const PORT = process.env.PORT || 7100;
 
-app.listen(PORT, () => console.log(`Server is running on http://localhost:${PORT}`));
+//Connect Database
+connectDB().then(() => {
+  console.log('MongoDB connected');
+
+  app.listen(PORT, () => console.log(`Server is running on http://localhost:${PORT}`));
+});

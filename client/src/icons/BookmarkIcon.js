@@ -11,9 +11,7 @@ export default function BookmarkIcon() {
     >
       <path
         stroke="none"
-        fill-rule="nonzero"
         fill="rgb(20.784314%,20.784314%,20.784314%)"
-        fill-opacity="1"
         d="M 25 27 L 16 20.25 L 7 27 L 7 4 L 25 4 Z M 25 27 "
       />
     </svg>
