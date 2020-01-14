@@ -1,11 +1,12 @@
 import styled from '@emotion/styled';
+import { animated } from 'react-spring';
 
-const Hello = styled.h1`
+const Hello = styled(animated.h1)`
   color: ${props => props.theme.light.primary};
   margin-top: 30px;
 `;
 
-export const Text = styled.p`
+export const Text = styled(animated.p)`
   color: ${props => props.theme.light.primary};
   font-size: 12px;
   margin-bottom: 30px;
@@ -33,7 +34,7 @@ export const TextBox = styled.div`
   margin-bottom: -10px;
 `;
 
-export const TranslateText = styled.p`
+export const TranslateText = styled(animated.p)`
   font-size: 12px;
 `;
 

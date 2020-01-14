@@ -85,6 +85,22 @@ export const LoginButton = styled.button`
   letter-spacing: 0.5px;
   cursor: pointer;
   outline: none;
+  animation: fadeInUp 1s;
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 100%, 0);
+    }
+
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  .fadeInUp {
+    animation-name: fadeInUp;
+  }
   :hover {
     background-color: ${({ theme }) => theme.light.primary};
     color: black;

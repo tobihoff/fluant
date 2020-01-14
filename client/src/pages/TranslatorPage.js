@@ -12,6 +12,7 @@ import theme from '../components/themes/theme';
 import { useLogout } from '../context/user';
 import { TextareaContainer } from '../components/Container/Container';
 import { Link } from 'react-router-dom';
+import { useSpring } from 'react-spring';
 
 export default function TranslatorPage() {
   const [translation, setTranslation] = React.useState([]);
@@ -19,6 +20,10 @@ export default function TranslatorPage() {
   const logout = useLogout();
   const [words, setWords] = React.useState('');
   const [result, setResult] = React.useState('');
+  const animation = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: 1 }
+  });
 
   async function loadVocabulary() {
     try {
@@ -69,7 +74,7 @@ export default function TranslatorPage() {
       <Header />
       <TextareaContainer>
         <TextBox>
-          <TranslateText>Übersetze Deutsch</TranslateText>
+          <TranslateText style={animation}>Übersetze Deutsch</TranslateText>
         </TextBox>
         <Textarea value={words} onChange={handleWordsChange} />
         <TextareaDark value={result} onMouseUp={handleVocabulary} />

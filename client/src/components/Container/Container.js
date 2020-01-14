@@ -36,6 +36,21 @@ export const ScoreContainer = styled(AddButtonContainer)`
   overflow: auto;
   margin-bottom: none;
   margin-top: 20px;
+  animation: slideInUp 1s;
+  @keyframes slideInUp {
+    from {
+      transform: translate3d(0, 100%, 0);
+      visibility: visible;
+    }
+
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  .slideInUp {
+    animation-name: slideInUp;
+  }
 `;
 
 export const TextareaContainer = styled.div`
