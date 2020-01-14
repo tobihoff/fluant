@@ -3,13 +3,7 @@ import React from 'react';
 export default function RemoveIcon() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="40px" height="40px">
-      <path
-        fill="none"
-        stroke="#4d3e40"
-        stroke-miterlimit="10"
-        stroke-width="2"
-        d="M6.25 40L40 8 74 40"
-      />
+      <path fill="none" stroke="#4d3e40" d="M6.25 40L40 8 74 40" />
       <path fill="#f78f8f" d="M4.5 38.5H75.5V75.5H4.5z" />
       <path fill="#c74343" d="M75,39v36H5V39H75 M76,38H4v38h72V38L76,38z" />
       <path fill="#735f63" d="M40 6.5A2.5 2.5 0 1 0 40 11.5A2.5 2.5 0 1 0 40 6.5Z" />

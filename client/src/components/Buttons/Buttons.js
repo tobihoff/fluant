@@ -13,6 +13,21 @@ const Button = styled.button`
   outline: none;
 `;
 
+export const ProfileButton = styled.button`
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border: 3px solid ${props => props.theme.light.border};
+  border-radius: 50%;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  position: absolute;
+  background-color: white;
+`;
+
 export const DeleteButton = styled.button`
   width: 20px;
   height: auto;
@@ -27,25 +42,6 @@ export const AddButton = styled(Button)`
   color: ${({ theme }) => theme.light.secondary};
   min-width: 120px;
   font-weight: bold;
-  &:hover {
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-    transform: scale(1.1);
-  }
-`;
-
-export const ProfileButton = styled.button`
-  width: 70px;
-  height: 70px;
-  object-fit: cover;
-  border: 3px solid ${props => props.theme.light.border};
-  border-radius: 50%;
-  outline: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  bottom: 0;
-  position: absolute;
-  background-color: white;
 `;
 
 export const FooterButton = styled.button`
