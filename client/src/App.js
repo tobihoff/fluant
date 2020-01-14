@@ -12,32 +12,30 @@ import { UserProvider } from '../src/context/user';
 
 const App = () => {
   return (
-    <>
+    <Router>
       <UserProvider>
         <ThemeProvider theme={theme}>
           <GlobalStyles />
-          <Router>
-            <Switch>
-              <Route exact path="/">
-                <LandingPage />
-              </Route>
-              <Route exact path="/translator">
-                <TranslatorPage />
-              </Route>
-              <Route exact path="/login">
-                <LoginPage />
-              </Route>
-              <Route exact path="/register">
-                <SignInPage />
-              </Route>
-              <Route exact path="/profile">
-                <ProfilePage />
-              </Route>
-            </Switch>
-          </Router>
+          <Switch>
+            <Route exact path="/">
+              <LandingPage />
+            </Route>
+            <Route exact path="/translator">
+              <TranslatorPage />
+            </Route>
+            <Route exact path="/login">
+              <LoginPage />
+            </Route>
+            <Route exact path="/register">
+              <SignInPage />
+            </Route>
+            <Route exact path="/profile">
+              <ProfilePage />
+            </Route>
+          </Switch>
         </ThemeProvider>
       </UserProvider>
-    </>
+    </Router>
   );
 };
 

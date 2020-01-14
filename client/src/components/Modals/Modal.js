@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import RemoveIcon from '../../icons/RemoveIcon';
 import Badge from '../Badges/Badge';
 import useFetch from '../../hooks/useFetch';
-import { UserContext } from '../../context/user';
+import { useUser } from '../../context/user';
 import DeleteIcon from '../../icons/DeleteIcon';
 import { DeleteButton } from '../../components/Buttons/Buttons';
 
@@ -38,17 +38,17 @@ const BadgeContainer = styled(RemoveContainer)`
 `;
 
 export default function DictonaryList({ onClick }) {
-  const [getUser, setGetUser] = React.useContext(UserContext);
+  const user = useUser();
 
-  let id = getUser.id;
+  const id = user.id;
   console.log(id);
 
-  const user = useFetch(`http://localhost:7100/api/dictonary/${id}`);
+  const dictonary = useFetch(`/api/dictonary/${id}`);
 
   const auth = localStorage.getItem('token');
 
   async function handleDelete(vocabularyId) {
-    return fetch(`http://localhost:7100/api/dictonary/${vocabularyId}`, {
+    return fetch(`/api/dictonary/${vocabularyId}`, {
       method: 'DELETE',
       headers: {
         'X-Auth-Token': auth
@@ -58,7 +58,7 @@ export default function DictonaryList({ onClick }) {
 
   return (
     <>
-      {user && (
+      {dictonary && (
         <ModalContainer>
           <RemoveContainer>
             <button onClick={onClick}>
@@ -66,7 +66,7 @@ export default function DictonaryList({ onClick }) {
             </button>
           </RemoveContainer>
           <BadgeContainer>
-            {user.map(word => (
+            {dictonary.map(word => (
               <Badge key={word.index}>
                 {word.vocabulary}
                 <DeleteButton id={word._id} onClick={() => handleDelete(word._id)}>

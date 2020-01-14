@@ -8,68 +8,51 @@ import LogoutIcon from '../icons/LogoutIcon';
 import Textarea, { TextareaDark } from '../components/Textarea/Textarea';
 import { ThemeProvider } from 'emotion-theming';
 import theme from '../components/themes/theme';
-import { UserContext } from '../context/user';
+import { useLogout } from '../context/user';
 import { TextareaContainer } from '../components/Container/Container';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function TranslatorPage() {
   const [translation, setTranslation] = React.useState([]);
-  const [teleport, setTeleport] = React.useState(false);
   const [themeColor, setThemeColor] = React.useState(theme.light);
-  const [user, setUser] = React.useContext(UserContext);
-  const history = useHistory();
+  const logout = useLogout();
+  const [words, setWords] = React.useState('');
+  const [result, setResult] = React.useState('');
 
   async function loadVocabulary() {
     try {
-      const res = await fetch('http://localhost:7100/api/translation');
-      const data = await res.json();
-      setTranslation(data[0].voca);
+      const response = await fetch('/api/translation');
+      const translations = await response.json();
+      setTranslation(translations);
     } catch (err) {
       console.log(err);
     }
   }
 
-  React.useEffect(async () => {
-    await loadVocabulary();
+  React.useEffect(() => {
+    loadVocabulary();
   }, []);
 
-  function handleTranslation() {
-    let words = document.getElementById('translator').value;
-    translation.find(item => {
-      if (words === item.german) {
-        return getResult();
-      }
+  function handleWordsChange(event) {
+    const words = event.target.value;
+    setWords(words);
+  }
+
+  React.useEffect(() => {
+    const solution = translation.find(item => item.german === words);
+    setResult(solution ? solution.english : '');
+  }, [words]);
+
+  async function handleVocabulary() {
+    const auth = localStorage.getItem('token');
+    await fetch('/api/dictonary', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Auth-Token': auth
+      },
+      body: JSON.stringify({ vocabulary: result })
     });
-  }
-
-  function getResult() {
-    let voc = document.getElementById('translator');
-    let word = document.getElementById('translator').value;
-    let solution = [];
-    solution.push(translation.find(item => item.german === word));
-    voc.onchange = () => {
-      let res = document.getElementById('result');
-      res.innerHTML = solution[0].english;
-    };
-    setTeleport(true);
-  }
-
-  async function handleVocabulary(event) {
-    setTeleport(true);
-    if (teleport) {
-      let location = event.target.value;
-      const auth = localStorage.getItem('token');
-      await fetch('http://localhost:7100/api/dictonary', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Auth-Token': auth
-        },
-        body: JSON.stringify({ vocabulary: location })
-      });
-    } else {
-      return null;
-    }
   }
 
   function handleThemeClick() {
@@ -80,18 +63,12 @@ export default function TranslatorPage() {
     }
   }
 
-  function handleLogout() {
-    localStorage.removeItem('token');
-    setUser(false);
-    history.push('/login');
-  }
-
   return (
     <ThemeProvider theme={themeColor}>
       <Header />
       <TextareaContainer>
-        <Textarea id="translator" onChange={handleTranslation} />
-        <TextareaDark id="result" onMouseUp={handleVocabulary} />
+        <Textarea value={words} onChange={handleWordsChange} />
+        <TextareaDark value={result} onMouseUp={handleVocabulary} />
       </TextareaContainer>
       <Footer>
         <FooterButton onClick={handleThemeClick}>
@@ -102,7 +79,7 @@ export default function TranslatorPage() {
             <ProfileIcon />
           </ProfileButton>
         </ProfileButtonContainer>
-        <FooterButton onClick={handleLogout}>
+        <FooterButton onClick={logout}>
           <LogoutIcon />
         </FooterButton>
       </Footer>

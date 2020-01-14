@@ -72,7 +72,7 @@ export const ToSignInButton = styled(Link)`
   text-decoration-line: none;
 `;
 
-export const LoginButton = styled.input`
+export const LoginButton = styled.button`
   display: inline-block;
   text-align: center;
   min-width: 65px;

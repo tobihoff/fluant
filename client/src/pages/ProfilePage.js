@@ -18,14 +18,14 @@ import {
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from 'emotion-theming';
 import theme from '../components/themes/theme';
-import { UserContext } from '../context/user';
+import { useLogout, useUser } from '../context/user';
 import NavLink from '../components/Links/Links';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function ProfilePage() {
   const [themeColor, setThemeColor] = React.useState(theme.light);
-  const [user, setUser] = React.useContext(UserContext);
-  const history = useHistory();
+  const user = useUser();
+  const logout = useLogout();
 
   function handleThemeClick() {
     if (themeColor === theme.light) {
@@ -33,12 +33,6 @@ export default function ProfilePage() {
     } else {
       setThemeColor(theme.light);
     }
-  }
-
-  function handleLogout() {
-    localStorage.removeItem('token');
-    setUser(false);
-    history.push('/login');
   }
 
   return (
@@ -83,7 +77,7 @@ export default function ProfilePage() {
             <TranslateIcon />
           </ProfileButton>
         </ProfileButtonContainer>
-        <FooterButton onClick={handleLogout}>
+        <FooterButton onClick={logout}>
           <LogoutIcon />
         </FooterButton>
       </Footer>
