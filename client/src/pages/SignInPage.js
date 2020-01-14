@@ -16,7 +16,7 @@ export default function LoginPage() {
     event.preventDefault();
     console.log(name, email, password);
     try {
-      const response = fetch('http://localhost:7100/api/users', {
+      const response = fetch('/api/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

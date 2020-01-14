@@ -26,4 +26,15 @@ export const Dictonary = styled.h3`
   height: 20vh;
 `;
 
+export const TextBox = styled.div`
+  display: flex;
+  align-self: flex-start;
+  padding-left: 40px;
+  margin-bottom: -10px;
+`;
+
+export const TranslateText = styled.p`
+  font-size: 12px;
+`;
+
 export default Hello;

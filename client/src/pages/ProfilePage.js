@@ -60,6 +60,9 @@ export default function ProfilePage() {
           <Route exact path="/learn" component={ProfileCards}>
             <ProfileCards />
           </Route>
+          <Route path="/profile" component={ProfileFriends}>
+            <ProfileFriends />
+          </Route>
           <Route path="/friends" component={ProfileFriends}>
             <ProfileFriends />
           </Route>

@@ -7,6 +7,7 @@ import ProfileIcon from '../icons/ProfileIcon';
 import LogoutIcon from '../icons/LogoutIcon';
 import Textarea, { TextareaDark } from '../components/Textarea/Textarea';
 import { ThemeProvider } from 'emotion-theming';
+import { TranslateText, TranslateBox, TextBox } from '../components/Text/Text';
 import theme from '../components/themes/theme';
 import { useLogout } from '../context/user';
 import { TextareaContainer } from '../components/Container/Container';
@@ -67,6 +68,9 @@ export default function TranslatorPage() {
     <ThemeProvider theme={themeColor}>
       <Header />
       <TextareaContainer>
+        <TextBox>
+          <TranslateText>Übersetze Deutsch</TranslateText>
+        </TextBox>
         <Textarea value={words} onChange={handleWordsChange} />
         <TextareaDark value={result} onMouseUp={handleVocabulary} />
       </TextareaContainer>
