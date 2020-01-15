@@ -12,6 +12,22 @@ const Textarea = styled.textarea`
   color: ${props => props.theme.secondary};
   font-size: 15px;
   resize: none;
+  animation: fadeInLeft 1s;
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translate3d(-100%, 0, 0);
+    }
+
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  .fadeInLeft {
+    animation-name: fadeInLeft;
+  }
 `;
 
 export const TextareaDark = styled(Textarea)`

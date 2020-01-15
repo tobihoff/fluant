@@ -4,7 +4,7 @@ import ScoreCards from '../Cards/ScoreCards';
 import useFetch from '../../hooks/useFetch';
 
 export default function Score() {
-  const users = useFetch('http://localhost:7100/api/auth');
+  const [users] = useFetch('http://localhost:7100/api/auth');
 
   if (!users.friends) {
     return null;
@@ -15,7 +15,7 @@ export default function Score() {
           {users.friends
             .sort((a, b) => b.xp - a.xp)
             .map(user => (
-              <ScoreCards key={user.index} name={user.name} img={user.img} xp={user.xp} />
+              <ScoreCards key={user.name} name={user.name} img={user.img} xp={user.xp} />
             ))}
         </ScoreContainer>
       </>

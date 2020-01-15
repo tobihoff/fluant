@@ -29,10 +29,10 @@ export const ProfileButton = styled.button`
 `;
 
 export const DeleteButton = styled.button`
+  padding-top: 2px;
   width: 20px;
   height: auto;
   border: none;
-  text-align: none;
   background-color: ${({ theme }) => theme.light.secondary};
 `;
 
@@ -42,11 +42,16 @@ export const AddButton = styled(Button)`
   color: ${({ theme }) => theme.light.secondary};
   min-width: 120px;
   font-weight: bold;
+  &:hover {
+    background-color: ${({ theme }) => theme.light.primary};
+    color: black;
+    border: 1px solid black;
+  }
 `;
 
 export const FooterButton = styled.button`
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   background: ${props => props.theme.secondary};
   border: none;
   outline: none;
@@ -85,6 +90,22 @@ export const LoginButton = styled.button`
   letter-spacing: 0.5px;
   cursor: pointer;
   outline: none;
+  animation: fadeInUp 1s;
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 100%, 0);
+    }
+
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  .fadeInUp {
+    animation-name: fadeInUp;
+  }
   :hover {
     background-color: ${({ theme }) => theme.light.primary};
     color: black;

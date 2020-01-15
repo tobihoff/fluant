@@ -16,7 +16,7 @@ export default function LoginPage() {
     event.preventDefault();
     console.log(name, email, password);
     try {
-      const response = fetch('http://localhost:7100/api/users', {
+      const response = fetch('/api/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -69,7 +69,7 @@ export default function LoginPage() {
           onChange={e => setPassword(e.target.value)}
           required
         />
-        <LoginButton type="submit" value="Sign up"></LoginButton>
+        <LoginButton type="submit">Register</LoginButton>
       </Form>
       <SignInContainer>
         <ToSignInButton to="/login">Back to the Login!</ToSignInButton>

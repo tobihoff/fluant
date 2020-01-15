@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 
 const Badge = styled.div`
+  display: flex;
+  justify-content: space-around;
   height: 20px;
   background-color: ${props => props.theme.light.secondary};
   color: ${props => props.theme.light.primary};

@@ -7,11 +7,16 @@ import { SignInContainer } from '../components/Container/Container';
 import { ToSignInButton } from '../components/Buttons/Buttons';
 import { LoginButton } from '../components/Buttons/Buttons';
 import { useLogin } from '../context/user';
+import { useSpring } from 'react-spring';
 
 export default function LoginPage() {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const login = useLogin();
+  const animation = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: 1 }
+  });
 
   async function handelSubmit(event) {
     event.preventDefault();
@@ -26,8 +31,8 @@ export default function LoginPage() {
 
   return (
     <LoginPageContainer>
-      <Hello>Hi!</Hello>
-      <Text>Login in to your account</Text>
+      <Hello style={animation}>Hi!</Hello>
+      <Text style={animation}>Login in to your account</Text>
       <Form onSubmit={handelSubmit}>
         <Label htmlFor="email">Your E-Mail?</Label>
         <LoginInput

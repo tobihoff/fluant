@@ -6,7 +6,7 @@ import FriendsCard from '../Cards/FirendsCard';
 import useFetch from '../../hooks/useFetch';
 
 export default function ProfileFriends() {
-  const users = useFetch('http://localhost:7100/api/auth');
+  const [users] = useFetch('/api/auth');
 
   if (!users.friends) {
     return null;
@@ -18,7 +18,7 @@ export default function ProfileFriends() {
             <AddButton>Add Friends</AddButton>
           </AddButtonContainer>
           {users.friends.map(user => (
-            <FriendsCard key={user.index} name={user.name} img={user.img} />
+            <FriendsCard key={user.name} name={user.name} img={user.img} />
           ))}
         </CardContainer>
       </>

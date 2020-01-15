@@ -12,6 +12,21 @@ export const CardContainer = styled.div`
   margin-top: 30px;
   max-height: 250px;
   overflow: auto;
+  animation: slideInUp 1s;
+  @keyframes slideInUp {
+    from {
+      transform: translate3d(0, 100%, 0);
+      visibility: visible;
+    }
+
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  .slideInUp {
+    animation-name: slideInUp;
+  }
 `;
 
 export const LearnContainer = styled(CardContainer)`
