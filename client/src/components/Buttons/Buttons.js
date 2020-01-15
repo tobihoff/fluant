@@ -29,10 +29,10 @@ export const ProfileButton = styled.button`
 `;
 
 export const DeleteButton = styled.button`
+  padding-top: 2px;
   width: 20px;
   height: auto;
   border: none;
-  text-align: none;
   background-color: ${({ theme }) => theme.light.secondary};
 `;
 
@@ -50,8 +50,8 @@ export const AddButton = styled(Button)`
 `;
 
 export const FooterButton = styled.button`
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   background: ${props => props.theme.secondary};
   border: none;
   outline: none;

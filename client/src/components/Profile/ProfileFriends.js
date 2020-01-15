@@ -6,7 +6,7 @@ import FriendsCard from '../Cards/FirendsCard';
 import useFetch from '../../hooks/useFetch';
 
 export default function ProfileFriends() {
-  const users = useFetch('/api/auth');
+  const [users] = useFetch('/api/auth');
 
   if (!users.friends) {
     return null;

@@ -56,32 +56,28 @@ const BadgeContainer = styled.div`
 `;
 
 export default function DictonaryList({ onClick }) {
-  const [data, setData] = React.useState(null);
   const user = useUser();
 
   const id = user.id;
 
   const auth = localStorage.getItem('token');
+  const [dictonary, updateDictonary] = useFetch(`/api/dictonary/${id}`);
 
   // async function getData() {
-  //   const dictonary = useFetch(`/api/dictonary/${id}`);
+  //   const res = await fetch(`/api/dictonary/${id}`, {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'X-Auth-Token': auth
+  //     }
+  //   });
+  //   const dictonary = await res.json();
   //   setData(dictonary);
   // }
-  async function getData() {
-    const res = await fetch(`/api/dictonary/${id}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Auth-Token': auth
-      }
-    });
-    const dictonary = await res.json();
-    setData(dictonary);
-  }
 
-  React.useEffect(() => {
-    getData();
-  }, []);
+  // React.useEffect(() => {
+  //   getData();
+  // }, []);
 
   async function handleDelete(vocabularyId) {
     return fetch(`/api/dictonary/${vocabularyId}`, {
@@ -94,7 +90,7 @@ export default function DictonaryList({ onClick }) {
 
   return (
     <>
-      {data && (
+      {dictonary && (
         <ModalContainer>
           <RemoveContainer>
             <button onClick={onClick}>
@@ -102,14 +98,14 @@ export default function DictonaryList({ onClick }) {
             </button>
           </RemoveContainer>
           <BadgeContainer>
-            {data.map(word => (
+            {dictonary.map(word => (
               <Badge key={word._id}>
                 {word.vocabulary}
                 <DeleteButton
                   id={word._id}
-                  onClick={() => {
-                    handleDelete(word._id);
-                    getData();
+                  onClick={async () => {
+                    await handleDelete(word._id);
+                    await updateDictonary();
                   }}
                 >
                   <DeleteIcon />

@@ -11,6 +11,7 @@ export const Container = styled.header`
   right: 0;
   height: 40px;
   top: 0;
+  z-index: 1;
 `;
 
 export const HeaderContainer = styled.div`

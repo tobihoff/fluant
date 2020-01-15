@@ -4,7 +4,7 @@ import ScoreCards from '../Cards/ScoreCards';
 import useFetch from '../../hooks/useFetch';
 
 export default function Score() {
-  const users = useFetch('http://localhost:7100/api/auth');
+  const [users] = useFetch('http://localhost:7100/api/auth');
 
   if (!users.friends) {
     return null;

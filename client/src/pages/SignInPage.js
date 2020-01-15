@@ -69,7 +69,7 @@ export default function LoginPage() {
           onChange={e => setPassword(e.target.value)}
           required
         />
-        <LoginButton type="submit" value="Sign up"></LoginButton>
+        <LoginButton type="submit">Register</LoginButton>
       </Form>
       <SignInContainer>
         <ToSignInButton to="/login">Back to the Login!</ToSignInButton>

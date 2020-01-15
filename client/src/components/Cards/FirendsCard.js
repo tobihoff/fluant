@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ProfileList, { ProfileImageContainer, UserProfileStatus } from '../Profile/ProfileList';
 import { FriendsProfile, ProfileInfo } from '../Profile/Profile';
 
@@ -13,3 +14,9 @@ export default function FriendsCard({ img, name, status }) {
     </ProfileList>
   );
 }
+
+FriendsCard.propTypes = {
+  img: PropTypes.object,
+  name: PropTypes.string,
+  status: PropTypes.bool
+};
