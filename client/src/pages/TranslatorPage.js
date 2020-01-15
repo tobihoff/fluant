@@ -7,16 +7,19 @@ import ProfileIcon from '../icons/ProfileIcon';
 import LogoutIcon from '../icons/LogoutIcon';
 import Textarea, { TextareaDark } from '../components/Textarea/Textarea';
 import { ThemeProvider } from 'emotion-theming';
-import { TranslateText, TranslateBox, TextBox } from '../components/Text/Text';
+import { TranslateText, TextBox } from '../components/Text/Text';
+import { AddButton } from '../components/Buttons/Buttons';
 import theme from '../components/themes/theme';
 import { useLogout } from '../context/user';
 import { TextareaContainer } from '../components/Container/Container';
 import { Link } from 'react-router-dom';
+import { UploadText } from '../components/Text/Text';
 import { useSpring } from 'react-spring';
 
 export default function TranslatorPage() {
   const [translation, setTranslation] = React.useState([]);
   const [themeColor, setThemeColor] = React.useState(theme.light);
+  const [loading, setLoading] = React.useState(false);
   const logout = useLogout();
   const [words, setWords] = React.useState('');
   const [result, setResult] = React.useState('');
@@ -49,8 +52,9 @@ export default function TranslatorPage() {
     setResult(solution ? solution.english : '');
   }, [words]);
 
-  async function handleVocabulary() {
+  async function upload() {
     const auth = localStorage.getItem('token');
+    setLoading(true);
     await fetch('/api/dictonary', {
       method: 'POST',
       headers: {
@@ -59,6 +63,8 @@ export default function TranslatorPage() {
       },
       body: JSON.stringify({ vocabulary: result })
     });
+    setTimeout(() => setLoading(false), 2000);
+    setWords('');
   }
 
   function handleThemeClick() {
@@ -76,8 +82,10 @@ export default function TranslatorPage() {
         <TextBox>
           <TranslateText style={animation}>Übersetze Deutsch</TranslateText>
         </TextBox>
-        <Textarea value={words} onChange={handleWordsChange} />
-        <TextareaDark value={result} onMouseUp={handleVocabulary} />
+        <Textarea value={words} onChange={handleWordsChange} autoFocus={true} />
+        <TextareaDark value={result} />
+        <br /> {loading && <UploadText>Is on his way to your Dictonary</UploadText>}
+        <AddButton onClick={upload}>Into my dictionary</AddButton>
       </TextareaContainer>
       <Footer>
         <FooterButton onClick={handleThemeClick}>

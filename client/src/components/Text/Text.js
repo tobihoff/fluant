@@ -38,4 +38,11 @@ export const TranslateText = styled(animated.p)`
   font-size: 12px;
 `;
 
+export const UploadText = styled.p`
+  font-size: 12px;
+  color: ${props => props.theme.light.border};
+  text-align: center;
+  margin-top: -10px;
+`;
+
 export default Hello;

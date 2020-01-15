@@ -42,6 +42,11 @@ export const AddButton = styled(Button)`
   color: ${({ theme }) => theme.light.secondary};
   min-width: 120px;
   font-weight: bold;
+  &:hover {
+    background-color: ${({ theme }) => theme.light.primary};
+    color: black;
+    border: 1px solid black;
+  }
 `;
 
 export const FooterButton = styled.button`
