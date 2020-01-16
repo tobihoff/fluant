@@ -18,6 +18,7 @@ function useFetch(url) {
 
   React.useEffect(() => {
     doFetch();
+    // eslint-disable-next-line
   }, [url]);
 
   return [data, doFetch];
