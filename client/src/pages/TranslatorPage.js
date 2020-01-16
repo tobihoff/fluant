@@ -40,6 +40,7 @@ export default function TranslatorPage() {
 
   React.useEffect(() => {
     loadVocabulary();
+    // eslint-disable-next-line
   }, []);
 
   function handleWordsChange(event) {
@@ -50,6 +51,7 @@ export default function TranslatorPage() {
   React.useEffect(() => {
     const solution = translation.find(item => item.german === words);
     setResult(solution ? solution.english : '');
+    // eslint-disable-next-line
   }, [words]);
 
   async function upload() {
@@ -83,7 +85,7 @@ export default function TranslatorPage() {
           <TranslateText style={animation}>Übersetze Deutsch</TranslateText>
         </TextBox>
         <Textarea value={words} onChange={handleWordsChange} autoFocus={true} />
-        <TextareaDark value={result} />
+        <TextareaDark value={result} readOnly />
         <br /> {loading && <UploadText>Is on his way to your Dictonary</UploadText>}
         <AddButton onClick={upload}>Into my dictionary</AddButton>
       </TextareaContainer>

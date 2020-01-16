@@ -16,7 +16,7 @@ export default function FriendsCard({ img, name, status }) {
 }
 
 FriendsCard.propTypes = {
-  img: PropTypes.object,
+  img: PropTypes.string,
   name: PropTypes.string,
   status: PropTypes.bool
 };

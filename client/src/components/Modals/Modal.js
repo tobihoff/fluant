@@ -64,22 +64,6 @@ export default function DictonaryList({ onClick }) {
   const auth = localStorage.getItem('token');
   const [dictonary, updateDictonary] = useFetch(`/api/dictonary/${id}`);
 
-  // async function getData() {
-  //   const res = await fetch(`/api/dictonary/${id}`, {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'X-Auth-Token': auth
-  //     }
-  //   });
-  //   const dictonary = await res.json();
-  //   setData(dictonary);
-  // }
-
-  // React.useEffect(() => {
-  //   getData();
-  // }, []);
-
   async function handleDelete(vocabularyId) {
     return fetch(`/api/dictonary/${vocabularyId}`, {
       method: 'DELETE',

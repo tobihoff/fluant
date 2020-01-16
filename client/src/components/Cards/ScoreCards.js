@@ -15,7 +15,7 @@ export default function ScoreList({ img, name, xp }) {
 }
 
 ScoreList.propTypes = {
-  img: PropTypes.object,
+  img: PropTypes.string,
   name: PropTypes.string,
-  xp: PropTypes.number
+  xp: PropTypes.string
 };

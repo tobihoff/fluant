@@ -18,10 +18,10 @@ export default function LoginPage() {
     to: { opacity: 1 }
   });
 
-  async function handelSubmit(event) {
+  function handelSubmit(event) {
     event.preventDefault();
     try {
-      await login(email, password);
+      login(email, password);
     } catch (err) {
       console.log(err);
     }
