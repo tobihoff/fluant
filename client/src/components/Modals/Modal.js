@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
 import RemoveIcon from '../../icons/RemoveIcon';
 import Badge from '../Badges/Badge';
 import useFetch from '../../hooks/useFetch';
@@ -118,3 +119,7 @@ export default function DictonaryList({ onClick }) {
     </>
   );
 }
+
+DictonaryList.propTypes = {
+  onClick: PropTypes.func
+};
